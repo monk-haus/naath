@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 export const metadata: Metadata = {
   metadataBase: new URL('https://naathmodels.com'),
   title: "Naath Model Management",
-  description: "Defining the face of tomorrow. A boutique model management agency.",
+  description: "Defining the face of tomorrow. A model management agency.",
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
