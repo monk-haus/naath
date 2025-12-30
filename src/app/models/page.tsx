@@ -44,11 +44,12 @@ export default function ModelsPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-alabaster w-full overflow-hidden">
-      <div className="relative min-h-screen flex flex-col md:flex-row md:h-screen">
+    // FIX: Added max-w-[100vw] and overflow-x-hidden to container
+    <main className="min-h-screen bg-alabaster w-full max-w-[100vw] overflow-x-hidden">
+      <div className="relative min-h-screen flex flex-col md:flex-row md:h-screen w-full">
         <Link
           href={`/models/${models[0].slug}`}
-          className="relative flex-1 h-[50vh] md:h-full overflow-hidden group"
+          className="relative flex-1 h-[50vh] md:h-full overflow-hidden group w-full md:w-1/2"
           style={{ cursor: canHover && hoveredSide === 'left' ? 'none' : 'pointer' }}
           onMouseEnter={() => canHover && setHoveredSide('left')}
           onMouseLeave={() => setHoveredSide(null)}
@@ -113,7 +114,7 @@ export default function ModelsPage() {
 
         <Link
           href={`/models/${models[1].slug}`}
-          className="relative flex-1 h-[50vh] md:h-full overflow-hidden group"
+          className="relative flex-1 h-[50vh] md:h-full overflow-hidden group w-full md:w-1/2"
           style={{ cursor: canHover && hoveredSide === 'right' ? 'none' : 'pointer' }}
           onMouseEnter={() => canHover && setHoveredSide('right')}
           onMouseLeave={() => setHoveredSide(null)}
@@ -166,6 +167,7 @@ export default function ModelsPage() {
           />
         </Link>
 
+        {/* Custom Cursor */}
         <div
           ref={cursorRef}
           className="fixed pointer-events-none z-50 top-0 left-0 hidden md:block will-change-transform"

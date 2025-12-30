@@ -68,9 +68,10 @@ export default function PrivateViewingRoom() {
   ];
 
   return (
+    // FIX: Enforce max-width 100vw and overflow-x-hidden on the section
     <section
       ref={sectionRef}
-      className="relative bg-bone py-24 md:py-40 border-t border-clay/10 overflow-x-hidden w-full"
+      className="relative bg-bone py-24 md:py-40 border-t border-clay/10 w-full max-w-[100vw] overflow-x-hidden"
       style={{
         cursor: isHoveringImage && canHover ? 'none' : 'default',
       }}

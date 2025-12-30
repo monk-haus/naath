@@ -5,7 +5,8 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-alabaster selection:bg-clay selection:text-alabaster w-full overflow-hidden">
+    // FIX: Added max-w-[100vw] and explicit overflow-x-hidden
+    <main className="min-h-screen bg-alabaster selection:bg-clay selection:text-alabaster w-full max-w-[100vw] overflow-x-hidden relative">
       <Hero />
       <EditorsLetter />
       <PrivateViewingRoom />
