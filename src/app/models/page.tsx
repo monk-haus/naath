@@ -57,7 +57,7 @@ export default function ModelsPage() {
             className="absolute inset-0 transition-all duration-1000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
             style={{
               transform: hoveredSide === 'left' ? 'scale(1.05)' : hoveredSide === 'right' ? 'translateX(-5%) scale(0.95)' : 'scale(1)',
-              filter: hoveredSide === 'left' ? 'grayscale(0%) brightness(1)' : 'grayscale(100%) brightness(0.8)',
+              filter: 'grayscale(100%) brightness(0.8)',
             }}
           >
             <Image

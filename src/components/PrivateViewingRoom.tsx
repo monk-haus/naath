@@ -127,6 +127,7 @@ export default function PrivateViewingRoom() {
                   style={{
                     transform: hoveredCard === model.id ? 'scale(1.05)' : 'scale(1)',
                     transition: 'transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    filter: model.image === '/assets/images/model-1.webp' ? 'grayscale(100%)' : 'none',
                   }}
                   sizes="(max-width: 768px) 85vw, (max-width: 1200px) 48vw, 35vw"
                   quality={90}

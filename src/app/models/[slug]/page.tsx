@@ -196,7 +196,10 @@ export default function ModelPortfolioPage() {
                 fill
                 priority={index === 0}
                 className="object-cover"
-                style={index === 0 ? { objectPosition: 'top center' } : undefined}
+                style={{
+                  ...(index === 0 ? { objectPosition: 'top center' } : {}),
+                  filter: img.src === '/assets/images/models/fatima-fawaz/fatima-2.webp' ? 'grayscale(100%)' : 'none',
+                }}
                 sizes="90vw"
                 quality={90}
                 unoptimized={process.env.NODE_ENV === 'development'}

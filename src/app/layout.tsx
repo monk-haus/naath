@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Naath Model Management",
-    description: "Defining the face of tomorrow. A boutique model management agency.",
+    description: "Defining the face of tomorrow. A model management agency.",
     url: "https://naathmodels.com",
     siteName: "Naath Model Management",
     images: [
