@@ -260,7 +260,7 @@ export default function ApplyPage() {
           </button>
 
           <div
-            className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${showGuidelines ? 'max-h-[800px] opacity-100 mt-12' : 'max-h-0 opacity-0 mt-0'
+            className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${showGuidelines ? 'max-h-[2000px] opacity-100 mt-12' : 'max-h-0 opacity-0 mt-0'
               }`}
           >
             <div className="border-t border-clay/20 pt-10 space-y-8">
