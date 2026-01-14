@@ -61,18 +61,8 @@ export default function AboutPage() {
             <div className="relative aspect-[4/5] md:aspect-[3/4] w-full overflow-hidden bg-stone/10 group order-2 md:order-1">
               <div className="absolute inset-4 border border-alabaster/30 z-20 pointer-events-none transition-all duration-700 group-hover:inset-6"></div>
 
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover grayscale opacity-90 transition-transform duration-[20s] ease-linear group-hover:scale-110"
-              >
-                <source src="/assets/videos/about-hands.mp4" type="video/mp4" />
-              </video>
-
               <div
-                className="absolute inset-0 bg-cover bg-center grayscale mix-blend-multiply opacity-50"
+                className="absolute inset-0 bg-cover bg-center grayscale transition-transform duration-[20s] ease-linear group-hover:scale-110"
                 style={{ backgroundImage: 'url(/assets/images/upscalemedia-transformed_3.webp)' }}
               />
 
