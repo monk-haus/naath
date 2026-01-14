@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function AboutPage() {
   return (
-    <main className="relative w-full bg-alabaster overflow-hidden">
+    <main className="relative w-full bg-alabaster">
       <div
         className="fixed inset-0 pointer-events-none z-0"
         style={{

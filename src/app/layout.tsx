@@ -42,9 +42,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="antialiased bg-alabaster text-charcoal min-h-screen flex flex-col overflow-x-hidden w-full max-w-full">
+      <body className="antialiased bg-alabaster text-charcoal min-h-screen flex flex-col w-full max-w-[100vw]">
         <Header />
-        <div className="flex-grow w-full">
+        {/* Main content wrapper */}
+        <div className="flex-grow w-full relative">
           {children}
         </div>
       </body>

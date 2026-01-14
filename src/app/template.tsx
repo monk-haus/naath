@@ -8,9 +8,12 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const pathname = usePathname();
 
+  // We disable animations completely on /models to prevent 'position: fixed' breaking
+  // due to stacking contexts created by opacity/transform.
   const isModelsPage = pathname?.startsWith('/models');
 
   useEffect(() => {
+    // Reset visibility on path change
     setIsVisible(false);
 
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -21,6 +24,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     };
     mediaQuery.addEventListener('change', handleChange);
 
+    // Small delay to trigger the enter animation
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 20);
@@ -33,19 +37,17 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
   return (
     <div
-      className="relative w-full min-h-screen"
+      className="relative w-full"
       style={{
+        // FIX: Removed translateY. Using ONLY opacity prevents scrollbar jumping/geometry changes.
+        // On models page, we force opacity: 1 and transition: none immediately to allow fixed positioning.
+        opacity: (prefersReducedMotion || isModelsPage) ? 1 : (isVisible ? 1 : 0),
 
-        transform: (prefersReducedMotion || isModelsPage)
-          ? 'none'
-          : isVisible
-            ? 'translateY(0)'
-            : 'translateY(20px)',
-        opacity: prefersReducedMotion ? 1 : isVisible ? 1 : 0,
         transition: (prefersReducedMotion || isModelsPage)
-          ? 'opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-          : 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-        willChange: (prefersReducedMotion || isModelsPage) ? 'opacity' : 'transform, opacity',
+          ? 'none'
+          : 'opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+
+        willChange: (prefersReducedMotion || isModelsPage) ? 'auto' : 'opacity',
       }}
     >
       {children}
