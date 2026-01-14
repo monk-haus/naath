@@ -2,11 +2,13 @@
 
 import { useState, useRef } from 'react';
 import Image from 'next/image';
+import { uploadToCloudinary } from '@/lib/cloudinary';
+import { submitApplication } from './actions';
 
 export default function ApplyPage() {
   const [showGuidelines, setShowGuidelines] = useState(false);
   const [dragActive, setDragActive] = useState<string | null>(null);
-  
+
   const [formData, setFormData] = useState({
     fullName: '',
     age: '',
@@ -18,8 +20,15 @@ export default function ApplyPage() {
     hips: '',
     shoeSize: '',
   });
-  
-  const [images, setImages] = useState<{ [key: string]: string | null }>({
+
+  const [imagePreviews, setImagePreviews] = useState<{ [key: string]: string | null }>({
+    headshot: null,
+    profile: null,
+    waistUp: null,
+    fullLength: null,
+  });
+
+  const [imageFiles, setImageFiles] = useState<{ [key: string]: File | null }>({
     headshot: null,
     profile: null,
     waistUp: null,
@@ -27,9 +36,10 @@ export default function ApplyPage() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<string>('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [heightWarning, setHeightWarning] = useState(false);
-  
+
   const fileInputRefs = useRef<{ [key: string]: HTMLInputElement | null }>({});
 
   const handleInputChange = (field: string, value: string) => {
@@ -47,16 +57,18 @@ export default function ApplyPage() {
 
   const handleImageUpload = (type: string, file: File) => {
     if (!file.type.startsWith('image/')) return;
-    
-    if (file.size > 5 * 1024 * 1024) {
-      alert("File too large. Please upload images under 5MB.");
+
+    if (file.size > 10 * 1024 * 1024) {
+      alert("File too large. Please upload images under 10MB.");
       return;
     }
+
+    setImageFiles((prev) => ({ ...prev, [type]: file }));
 
     const reader = new FileReader();
     reader.onload = (e) => {
       const result = e.target?.result as string;
-      setImages((prev) => ({ ...prev, [type]: result }));
+      setImagePreviews((prev) => ({ ...prev, [type]: result }));
     };
     reader.readAsDataURL(file);
   };
@@ -97,20 +109,53 @@ export default function ApplyPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    const missingImages = Object.values(images).some(img => img === null);
-    if (missingImages) {
+
+    const missingFiles = Object.values(imageFiles).some(file => file === null);
+    if (missingFiles) {
       alert("Please upload all required polaroids.");
       return;
     }
 
     setIsSubmitting(true);
+    setSubmitStatus('Uploading images...');
 
-    setTimeout(() => {
+    try {
+      const uploadedUrls: { [key: string]: string } = {};
+      const imageEntries = Object.entries(imageFiles);
+
+      for (let i = 0; i < imageEntries.length; i++) {
+        const [key, file] = imageEntries[i];
+        if (file) {
+          setSubmitStatus(`Uploading ${key} (${i + 1}/${imageEntries.length})...`);
+          uploadedUrls[key] = await uploadToCloudinary(file);
+        }
+      }
+
+      setSubmitStatus('Sending application...');
+
+      const result = await submitApplication({
+        ...formData,
+        images: {
+          headshot: uploadedUrls.headshot,
+          profile: uploadedUrls.profile,
+          waistUp: uploadedUrls.waistUp,
+          fullLength: uploadedUrls.fullLength,
+        },
+      });
+
+      if (result.success) {
+        setIsSubmitted(true);
+        window.scrollTo(0, 0);
+      } else {
+        alert(result.error || 'Failed to submit application. Please try again.');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('An error occurred. Please try again.');
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      window.scrollTo(0, 0);
-    }, 2000);
+      setSubmitStatus('');
+    }
   };
 
   const triggerFileUpload = (type: string) => {
@@ -215,9 +260,8 @@ export default function ApplyPage() {
           </button>
 
           <div
-            className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-              showGuidelines ? 'max-h-[800px] opacity-100 mt-12' : 'max-h-0 opacity-0 mt-0'
-            }`}
+            className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${showGuidelines ? 'max-h-[800px] opacity-100 mt-12' : 'max-h-0 opacity-0 mt-0'
+              }`}
           >
             <div className="border-t border-clay/20 pt-10 space-y-8">
               <h3
@@ -231,17 +275,31 @@ export default function ApplyPage() {
                 Required Poses
               </h3>
               <div className="grid grid-cols-2 gap-4">
-                {['Profile', 'Front', '3/4 View', 'Full Body'].map((pose) => (
-                  <div key={pose} className="aspect-[3/4] border border-clay/30 flex items-center justify-center bg-bone/30">
+                {[
+                  { label: 'Profile', src: '/assets/images/apply/profile.webp' },
+                  { label: 'Front', src: '/assets/images/apply/front.webp' },
+                  { label: '3/4 View', src: '/assets/images/apply/3-4.webp' },
+                  { label: 'Full Body', src: '/assets/images/apply/full-body.webp' },
+                ].map((pose) => (
+                  <div key={pose.label} className="space-y-2">
+                    <div className="relative aspect-[3/4] border border-clay/30 overflow-hidden bg-bone/30">
+                      <Image
+                        src={pose.src}
+                        alt={`${pose.label} pose reference`}
+                        fill
+                        className="object-contain grayscale"
+                        sizes="(max-width: 768px) 50vw, 200px"
+                      />
+                    </div>
                     <span
-                      className="text-stone uppercase text-center opacity-60"
+                      className="block text-stone uppercase text-center opacity-60"
                       style={{
                         fontFamily: 'var(--font-montreal)',
                         fontSize: '10px',
                         letterSpacing: '0.15em',
                       }}
                     >
-                      {pose}
+                      {pose.label}
                     </span>
                   </div>
                 ))}
@@ -354,7 +412,7 @@ export default function ApplyPage() {
             </div>
 
             <div className={`overflow-hidden transition-all duration-500 ${heightWarning ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'}`}>
-               <div
+              <div
                 className="text-stone text-sm leading-relaxed border-l border-clay pl-4 py-1 italic"
                 style={{
                   fontFamily: 'var(--font-montreal)',
@@ -399,11 +457,11 @@ export default function ApplyPage() {
                   >
                     {frame.label}
                   </label>
-                  
+
                   <div
                     className={`relative aspect-[3/4] border border-dashed transition-all duration-300 cursor-pointer overflow-hidden group 
-                      ${dragActive === frame.key 
-                        ? 'border-charcoal bg-clay/10 scale-[0.98]' 
+                      ${dragActive === frame.key
+                        ? 'border-charcoal bg-clay/10 scale-[0.98]'
                         : 'border-clay/40 bg-bone/30 hover:bg-bone/50 hover:border-clay'
                       }`}
                     onDragEnter={(e) => handleDragEnter(e, frame.key)}
@@ -412,15 +470,15 @@ export default function ApplyPage() {
                     onDrop={(e) => handleDrop(e, frame.key)}
                     onClick={() => triggerFileUpload(frame.key)}
                   >
-                    {images[frame.key] ? (
+                    {imagePreviews[frame.key] ? (
                       <div className="absolute inset-0 transition-opacity duration-500">
                         <img
-                          src={images[frame.key]!}
+                          src={imagePreviews[frame.key]!}
                           alt={frame.label}
                           className="w-full h-full object-cover grayscale"
                         />
                         <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors flex items-center justify-center">
-                            <span className="opacity-0 group-hover:opacity-100 text-alabaster font-montreal text-[10px] uppercase tracking-widest bg-charcoal/80 px-3 py-1.5 backdrop-blur-md">Replace</span>
+                          <span className="opacity-0 group-hover:opacity-100 text-alabaster font-montreal text-[10px] uppercase tracking-widest bg-charcoal/80 px-3 py-1.5 backdrop-blur-md">Replace</span>
                         </div>
                       </div>
                     ) : (
@@ -463,7 +521,7 @@ export default function ApplyPage() {
                 letterSpacing: '0.25em',
               }}
             >
-              {isSubmitting ? 'REVIEWING APPLICATION...' : 'SEND TO BOARD'}
+              {isSubmitting ? (submitStatus || 'PROCESSING...') : 'SEND TO BOARD'}
             </button>
           </div>
         </form>

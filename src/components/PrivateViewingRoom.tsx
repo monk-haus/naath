@@ -9,7 +9,7 @@ export default function PrivateViewingRoom() {
   const [isHoveringImage, setIsHoveringImage] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [canHover, setCanHover] = useState(false);
-  
+
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
@@ -57,18 +57,9 @@ export default function PrivateViewingRoom() {
       specs: '179cm / 5\'10.5"',
       href: '/models/fatima',
     },
-    {
-      id: 'anok',
-      name: 'Anok Y.',
-      image: '/assets/images/model-2.webp',
-      alt: 'Anok Y Portfolio',
-      specs: '176cm / 5\'9.5"',
-      href: '/models/anok',
-    },
   ];
 
   return (
-    // FIX: Enforce max-width 100vw and overflow-x-hidden on the section
     <section
       ref={sectionRef}
       className="relative bg-bone py-24 md:py-40 border-t border-clay/10 w-full max-w-[100vw] overflow-x-hidden"
@@ -87,7 +78,7 @@ export default function PrivateViewingRoom() {
           className="text-stone text-[10px] uppercase tracking-widest font-medium mb-2 hidden md:block"
           style={{ fontFamily: 'var(--font-montreal)' }}
         >
-          Currently Representing (02)
+          Currently Representing (01)
         </span>
       </div>
 
@@ -128,13 +119,13 @@ export default function PrivateViewingRoom() {
                   style={{
                     transform: hoveredCard === model.id ? 'scale(1.05)' : 'scale(1)',
                     transition: 'transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                    filter: model.image === '/assets/images/model-1.webp' ? 'grayscale(100%)' : 'none',
+                    filter: 'grayscale(100%)',
                   }}
                   sizes="(max-width: 768px) 85vw, (max-width: 1200px) 48vw, 35vw"
                   quality={90}
                   unoptimized={process.env.NODE_ENV === 'development'}
                 />
-                
+
                 <div className="absolute inset-0 bg-charcoal/0 active:bg-charcoal/10 transition-colors duration-300 md:hidden" />
               </div>
 
@@ -160,7 +151,7 @@ export default function PrivateViewingRoom() {
                     {model.specs}
                   </span>
                 </div>
-                
+
                 <span className="md:hidden text-[9px] uppercase tracking-widest border border-charcoal/20 px-3 py-1 rounded-full text-charcoal">
                   View
                 </span>
@@ -251,7 +242,7 @@ export default function PrivateViewingRoom() {
               letterSpacing: '0.15em',
             }}
           >
-            VIEW<br/>BOOK
+            VIEW<br />BOOK
           </span>
         </div>
       </div>

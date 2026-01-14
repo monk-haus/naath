@@ -8,6 +8,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const pathname = usePathname();
 
+  const isModelsPage = pathname?.startsWith('/models');
+
   useEffect(() => {
     setIsVisible(false);
 
@@ -33,16 +35,17 @@ export default function Template({ children }: { children: React.ReactNode }) {
     <div
       className="relative w-full min-h-screen"
       style={{
-        transform: prefersReducedMotion
+
+        transform: (prefersReducedMotion || isModelsPage)
           ? 'none'
           : isVisible
-          ? 'translateY(0)'
-          : 'translateY(20px)',
+            ? 'translateY(0)'
+            : 'translateY(20px)',
         opacity: prefersReducedMotion ? 1 : isVisible ? 1 : 0,
-        transition: prefersReducedMotion
-          ? 'none'
+        transition: (prefersReducedMotion || isModelsPage)
+          ? 'opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
           : 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-        willChange: prefersReducedMotion ? 'auto' : 'transform, opacity',
+        willChange: (prefersReducedMotion || isModelsPage) ? 'opacity' : 'transform, opacity',
       }}
     >
       {children}

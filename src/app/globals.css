@@ -65,7 +65,6 @@
   --animate-float: float 3s ease-in-out infinite;
 }
 
-/* FIX: Enforce max-width and overflow-x hidden on both html and body to prevent horizontal scroll */
 html, body {
   background-color: var(--alabaster);
   color: var(--charcoal);

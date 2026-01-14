@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function ModelsPage() {
-  const [hoveredSide, setHoveredSide] = useState<'left' | 'right' | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
   const [canHover, setCanHover] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
 
@@ -26,153 +26,80 @@ export default function ModelsPage() {
     return () => window.removeEventListener('mousemove', moveCursor);
   }, [canHover]);
 
-  const models = [
-    {
-      id: 'fatima',
-      name: 'FATIMA',
-      slug: 'fatima',
-      image: '/assets/images/model-1.webp',
-      alt: 'Fatima F',
-    },
-    {
-      id: 'anok',
-      name: 'ANOK Y.',
-      slug: 'anok',
-      image: '/assets/images/model-2.webp',
-      alt: 'Anok Y',
-    },
-  ];
+  const model = {
+    id: 'fatima',
+    name: 'FATIMA',
+    slug: 'fatima',
+    image: '/assets/images/models/fatima-fawaz/fatima-5.webp',
+    alt: 'Fatima F',
+  };
 
   return (
-    // FIX: Added max-w-[100vw] and overflow-x-hidden to container
-    <main className="min-h-screen bg-alabaster w-full max-w-[100vw] overflow-x-hidden">
-      <div className="relative min-h-screen flex flex-col md:flex-row md:h-screen w-full">
+    <main className="fixed inset-0 w-full h-full bg-alabaster overflow-hidden overscroll-none z-0">
+
+      <div className="relative w-full h-full">
         <Link
-          href={`/models/${models[0].slug}`}
-          className="relative flex-1 h-[50vh] md:h-full overflow-hidden group w-full md:w-1/2"
-          style={{ cursor: canHover && hoveredSide === 'left' ? 'none' : 'pointer' }}
-          onMouseEnter={() => canHover && setHoveredSide('left')}
-          onMouseLeave={() => setHoveredSide(null)}
+          href={`/models/${model.slug}`}
+          className="relative block w-full h-full overflow-hidden group cursor-none"
+          onMouseEnter={() => canHover && setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
           <div
             className="absolute inset-0 transition-all duration-1000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
             style={{
-              transform: hoveredSide === 'left' ? 'scale(1.05)' : hoveredSide === 'right' ? 'translateX(-5%) scale(0.95)' : 'scale(1)',
-              filter: 'grayscale(100%) brightness(0.8)',
+              transform: isHovered ? 'scale(1.05)' : 'scale(1)',
+              filter: canHover
+                ? (isHovered ? 'grayscale(0%) brightness(1)' : 'grayscale(100%) brightness(0.8)')
+                : 'grayscale(0%) brightness(1)',
             }}
           >
             <Image
-              src={models[0].image}
-              alt={models[0].alt}
+              src={model.image}
+              alt={model.alt}
               fill
               className="object-cover"
               style={{ objectPosition: 'top center' }}
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="100vw"
               priority
               unoptimized={process.env.NODE_ENV === 'development'}
             />
           </div>
 
           <div
-            className="absolute left-4 md:left-8 top-0 bottom-0 flex items-center z-20 pointer-events-none mix-blend-difference text-alabaster"
+            className="absolute left-4 md:left-12 top-0 bottom-0 flex items-center z-20 pointer-events-none mix-blend-difference text-alabaster"
             style={{
               writingMode: 'vertical-rl',
               transform: 'rotate(180deg)',
             }}
           >
             <h1
-              className="whitespace-nowrap leading-none"
+              className="whitespace-nowrap leading-none transition-opacity duration-500"
               style={{
                 fontFamily: 'var(--font-editorial)',
                 fontWeight: 200,
-                fontSize: 'clamp(4rem, 15vh, 12rem)',
-                opacity: hoveredSide === 'left' ? 1 : 0.6,
-                transition: 'opacity 0.5s ease',
+                fontSize: 'clamp(5rem, 20vh, 16rem)',
+                opacity: canHover ? (isHovered ? 1 : 0.7) : 1,
               }}
             >
-              {models[0].name}
-            </h1>
-          </div>
-          
-          <div className="md:hidden absolute inset-0 bg-charcoal/0 active:bg-charcoal/10 transition-colors duration-300 pointer-events-none" />
-
-          <div
-            className="hidden md:block absolute inset-0 bg-charcoal/0 transition-colors duration-500 pointer-events-none"
-            style={{
-              backgroundColor: hoveredSide === 'right' ? 'rgba(28, 27, 26, 0.4)' : 'transparent',
-            }}
-          />
-        </Link>
-
-        <div
-          className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-alabaster/50 z-30 pointer-events-none transform -translate-x-1/2 mix-blend-difference"
-          style={{
-            opacity: hoveredSide ? 0 : 1,
-            transition: 'opacity 0.3s ease',
-          }}
-        />
-
-        <Link
-          href={`/models/${models[1].slug}`}
-          className="relative flex-1 h-[50vh] md:h-full overflow-hidden group w-full md:w-1/2"
-          style={{ cursor: canHover && hoveredSide === 'right' ? 'none' : 'pointer' }}
-          onMouseEnter={() => canHover && setHoveredSide('right')}
-          onMouseLeave={() => setHoveredSide(null)}
-        >
-          <div
-            className="absolute inset-0 transition-all duration-1000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
-            style={{
-              transform: hoveredSide === 'right' ? 'scale(1.05)' : hoveredSide === 'left' ? 'translateX(5%) scale(0.95)' : 'scale(1)',
-              filter: hoveredSide === 'right' ? 'grayscale(0%) brightness(1)' : 'grayscale(100%) brightness(0.8)',
-            }}
-          >
-            <Image
-              src={models[1].image}
-              alt={models[1].alt}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              priority
-              unoptimized={process.env.NODE_ENV === 'development'}
-            />
-          </div>
-
-          <div
-            className="absolute right-4 md:right-8 top-0 bottom-0 flex items-center z-20 pointer-events-none mix-blend-difference text-alabaster"
-            style={{
-              writingMode: 'vertical-rl',
-            }}
-          >
-            <h1
-              className="whitespace-nowrap leading-none"
-              style={{
-                fontFamily: 'var(--font-editorial)',
-                fontWeight: 200,
-                fontSize: 'clamp(4rem, 15vh, 12rem)',
-                opacity: hoveredSide === 'right' ? 1 : 0.6,
-                transition: 'opacity 0.5s ease',
-              }}
-            >
-              {models[1].name}
+              {model.name}
             </h1>
           </div>
 
           <div className="md:hidden absolute inset-0 bg-charcoal/0 active:bg-charcoal/10 transition-colors duration-300 pointer-events-none" />
 
           <div
-            className="hidden md:block absolute inset-0 bg-charcoal/0 transition-colors duration-500 pointer-events-none"
+            className="hidden md:block absolute inset-0 transition-colors duration-500 pointer-events-none"
             style={{
-              backgroundColor: hoveredSide === 'left' ? 'rgba(28, 27, 26, 0.4)' : 'transparent',
+              backgroundColor: isHovered ? 'transparent' : 'rgba(28, 27, 26, 0.2)',
             }}
           />
         </Link>
 
-        {/* Custom Cursor */}
         <div
           ref={cursorRef}
           className="fixed pointer-events-none z-50 top-0 left-0 hidden md:block will-change-transform"
           style={{
-            opacity: hoveredSide && canHover ? 1 : 0,
+            opacity: isHovered && canHover ? 1 : 0,
             transition: 'opacity 0.2s ease',
           }}
         >

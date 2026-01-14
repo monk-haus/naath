@@ -1,19 +1,13 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
-  const videoRef = useRef<HTMLVideoElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.6;
-    }
-  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -83,22 +77,15 @@ export default function Hero() {
           willChange: 'filter, transform',
         }}
       >
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-60"
-          style={{ backgroundImage: "url('/assets/images/hero-fallback.webp')" }}
-        />
-
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover opacity-80"
+        <Image
+          src="/assets/images/models/fatima-fawaz/fatima-3.webp"
+          alt="Hero"
+          fill
+          priority
+          className="object-cover opacity-80"
           style={{ objectPosition: 'center 20%' }}
-        >
-          <source src="/assets/videos/hero-video.mp4" type="video/mp4" />
-        </video>
+          unoptimized={process.env.NODE_ENV === 'development'}
+        />
 
         <div
             className="absolute inset-0 pointer-events-none z-10"
@@ -113,7 +100,7 @@ export default function Hero() {
 
         <div className="absolute inset-0 z-20 pointer-events-none p-4 md:p-8 mix-blend-difference text-white/90">
           <span className="absolute bottom-4 left-4 md:bottom-8 md:left-8 text-[9px] md:text-[10px] tracking-[0.2em] font-medium font-montreal hidden md:block">CURATED ROSTER</span>
-          <span className="absolute bottom-4 right-4 md:bottom-8 md:right-8 text-[9px] md:text-[10px] tracking-[0.2em] font-medium font-montreal hidden md:block">LDN / NYC / PAR</span>
+          <span className="absolute bottom-4 right-4 md:bottom-8 md:right-8 text-[9px] md:text-[10px] tracking-[0.2em] font-medium font-montreal hidden md:block">NBO / JUB </span>
         </div>
 
         <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none mix-blend-difference text-white px-4">

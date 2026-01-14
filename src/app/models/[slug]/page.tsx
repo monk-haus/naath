@@ -45,30 +45,9 @@ const modelData: Record<string, ModelData> = {
       { src: '/assets/images/models/fatima-fawaz/fatima-4.webp', alt: 'Detail Shot', type: 'detail' },
     ],
     digitals: [
-      { src: '/assets/images/models/fatima-fawaz/fatima-5.webp', alt: 'Digital 1' },
-      { src: '/assets/images/models/fatima-fawaz/fatima-6.webp', alt: 'Digital 2' },
-      { src: '/assets/images/models/fatima-fawaz/fatima-1.webp', alt: 'Digital 3' },
-    ],
-  },
-  anok: {
-    name: 'Anok Y.',
-    stats: {
-      height: '176cm / 5\'9.5"',
-      bust: '84cm / 33"',
-      waist: '60cm / 23.5"',
-      hips: '88cm / 34.5"',
-      shoe: '39 EU / 8.5 US',
-    },
-    images: [
-      { src: '/assets/images/models/anok-yai/anok-1.webp', alt: 'Editorial Landscape', type: 'landscape' },
-      { src: '/assets/images/models/anok-yai/anok-2.webp', alt: 'Portrait 1', type: 'portrait' },
-      { src: '/assets/images/models/anok-yai/anok-3.webp', alt: 'Portrait 2', type: 'portrait' },
-      { src: '/assets/images/models/anok-yai/anok-4.webp', alt: 'Detail Shot', type: 'detail' },
-    ],
-    digitals: [
-      { src: '/assets/images/models/anok-yai/anok-5.webp', alt: 'Digital 1' },
-      { src: '/assets/images/models/anok-yai/anok-1.webp', alt: 'Digital 2' },
-      { src: '/assets/images/models/anok-yai/anok-2.webp', alt: 'Digital 3' },
+      { src: '/assets/images/models/fatima-fawaz/fatima-digital-1.webp', alt: 'Digital 1' },
+      { src: '/assets/images/models/fatima-fawaz/fatima-digital-2.webp', alt: 'Digital 2' },
+      { src: '/assets/images/models/fatima-fawaz/fatima-digital-3.webp', alt: 'Digital 3' },
     ],
   },
 };
@@ -279,7 +258,7 @@ export default function ModelPortfolioPage() {
           <div className="p-8 overflow-y-auto flex-1 space-y-6">
             <p className="text-stone text-xs font-montreal mb-8 leading-relaxed">
               Unretouched polaroids. Natural light. No makeup.
-              <br/>Updated: October 2025.
+              <br/>Updated: January 2026.
             </p>
             
             <div className="grid grid-cols-2 gap-4">
