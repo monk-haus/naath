@@ -100,7 +100,7 @@ export default function Footer() {
               opacity: 0.5,
             }}
           >
-            © 2025 Naath Model Management. All Rights Reserved.
+            © 2026 Naath Model Management. All Rights Reserved.
           </div>
         </div>
       </div>

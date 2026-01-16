@@ -156,7 +156,7 @@ export default function Header() {
         <div className={`absolute bottom-10 text-stone text-[10px] uppercase tracking-widest transition-opacity duration-700 delay-300 ${
             isMobileMenuOpen ? 'opacity-100' : 'opacity-0'
         }`} style={{ fontFamily: 'var(--font-montreal)' }}>
-          © 2025 Naath Models
+          © 2026 Naath Models
         </div>
       </div>
     </>
