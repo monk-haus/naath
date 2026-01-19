@@ -65,7 +65,12 @@ export default function ClientPage({ model }: { model: ModelData }) {
             });
 
             const imagesToLoad = model.images.slice(0, 4).map(img => img.src);
-            const loadedImages = await Promise.all(imagesToLoad.map(src => loadImage(src)));
+            const digitalsToLoad = model.digitals.map(img => img.src);
+
+            const [loadedImages, loadedDigitals] = await Promise.all([
+                Promise.all(imagesToLoad.map(src => loadImage(src))),
+                Promise.all(digitalsToLoad.map(src => loadImage(src)))
+            ]);
 
             const mainImg = loadedImages[0];
             if (mainImg) {
@@ -139,6 +144,48 @@ export default function ClientPage({ model }: { model: ModelData }) {
             doc.setFont("helvetica", "normal");
             doc.text("nyagua@naathmodels.com", 105, 280, { align: "center" });
             doc.text("www.naathmodels.com", 105, 285, { align: "center" });
+
+            if (loadedDigitals.length > 0) {
+                doc.addPage();
+
+                doc.setFont("helvetica", "bold");
+                doc.setFontSize(14);
+                doc.text("RAW DIGITALS", 105, 20, { align: "center" });
+
+                let digitalY = 40;
+                const digitalColWidth = 90;
+                const digitalGap = 10;
+                const margin = (210 - (digitalColWidth * 2) - digitalGap) / 2;
+
+                loadedDigitals.forEach((img, idx) => {
+                    if (digitalY > 250) {
+                        doc.addPage();
+                        digitalY = 40;
+                    }
+
+                    const col = idx % 2;
+                    const x = margin + (col * (digitalColWidth + digitalGap));
+
+                    if (col === 0 && idx > 0) {
+                        digitalY += 130;
+                    }
+
+                    const imgRatio = img.height / img.width;
+                    let w = digitalColWidth;
+                    let h = w * imgRatio;
+
+                    if (h > 120) {
+                        h = 120;
+                        w = h / imgRatio;
+                    }
+
+                    doc.addImage(img, 'JPEG', x, digitalY, w, h);
+                });
+
+                doc.setFont("helvetica", "normal");
+                doc.setFontSize(8);
+                doc.text("UNRETOUCHED | NATURAL LIGHT", 105, 285, { align: "center" });
+            }
 
             doc.save(`${model.name.replace(/\s+/g, '_')}_CompCard.pdf`);
 
@@ -221,10 +268,10 @@ export default function ClientPage({ model }: { model: ModelData }) {
                         <div
                             key={index}
                             className={`relative overflow-hidden bg-bone ${img.type === 'landscape'
-                                    ? 'w-full aspect-[16/10]'
-                                    : img.type === 'detail'
-                                        ? 'w-full md:w-2/3 mx-auto aspect-square'
-                                        : 'w-full md:w-1/2 mx-auto aspect-[3/4]'
+                                ? 'w-full aspect-[16/10]'
+                                : img.type === 'detail'
+                                    ? 'w-full md:w-2/3 mx-auto aspect-square'
+                                    : 'w-full md:w-1/2 mx-auto aspect-[3/4]'
                                 }`}
                         >
                             <Image
