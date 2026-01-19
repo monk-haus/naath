@@ -1,22 +1,4 @@
-'use client';
-
-import { useState } from 'react';
-
 export default function JournalPage() {
-  const [email, setEmail] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleEmailSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    setTimeout(() => {
-      alert('Thank you. You have been added to the waitlist for Volume 01.');
-      setEmail('');
-      setIsSubmitting(false);
-    }, 1000);
-  };
-
   return (
     <main className="min-h-screen bg-alabaster w-full flex flex-col relative overflow-hidden selection:bg-clay selection:text-alabaster">
       <div
@@ -83,48 +65,12 @@ export default function JournalPage() {
             }}
           >
             We are currently curating the stories for our inaugural issue.
-            Join the waitlist to receive Volume 01 upon release.
           </p>
-
-          <form 
-            onSubmit={handleEmailSubmit} 
-            className="pt-8 w-full max-w-md mx-auto animate-fade-in"
-            style={{
-              animationDelay: '0.4s',
-              animationFillMode: 'forwards',
-              opacity: 0,
-            }}
-          >
-            <div className="relative group">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="ENTER YOUR EMAIL"
-                className="w-full bg-transparent border-b border-clay/40 py-4 text-center text-charcoal focus:outline-none focus:border-charcoal transition-all duration-500 placeholder:text-stone/30 placeholder:uppercase rounded-none appearance-none"
-                style={{
-                  fontFamily: 'var(--font-montreal)',
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.15em',
-                }}
-                required
-              />
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="absolute right-0 top-1/2 -translate-y-1/2 text-[10px] uppercase tracking-widest text-charcoal hover:text-clay transition-colors disabled:opacity-50 disabled:cursor-wait"
-                style={{ fontFamily: 'var(--font-montreal)' }}
-              >
-                {isSubmitting ? 'PROCESSING...' : 'NOTIFY ME'}
-              </button>
-            </div>
-          </form>
         </div>
       </section>
 
       <div className="pb-12 text-center relative z-10">
-        <span 
+        <span
           className="text-clay/40 uppercase tracking-[0.2em] text-[9px]"
           style={{ fontFamily: 'var(--font-montreal)' }}
         >
