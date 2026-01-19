@@ -67,9 +67,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  // OPTIMIZATION: Social platforms (Twitter/X) prefer Landscape images (1.91:1 ratio).
+  // We try to find a 'landscape' image first. If none exists, we fall back to the main portrait.
+  const socialImageObj = model.images.find(img => img.type === 'landscape') || model.images[0];
+  const socialImageSrc = socialImageObj?.src || '/og-image.jpg';
+
   const title = `${model.name} | Naath Model Management`;
   const description = `Portfolio and digitals for ${model.name}. Height: ${model.stats.height}. Represented by Naath Model Management.`;
-  const ogImage = model.images[0]?.src || '/og-image.jpg';
 
   return {
     title,
@@ -77,11 +81,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title,
       description,
+      // MetadataBase in layout.tsx will resolve this relative path automatically
       images: [
         {
-          url: ogImage,
-          width: 800,
-          height: 1200,
+          url: socialImageSrc,
+          width: socialImageObj.type === 'landscape' ? 1200 : 800,
+          height: socialImageObj.type === 'landscape' ? 630 : 1200,
           alt: model.name,
         },
       ],
@@ -90,7 +95,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title,
       description,
-      images: [ogImage],
+      images: [socialImageSrc],
     },
   };
 }

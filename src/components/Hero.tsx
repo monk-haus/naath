@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  
+
   const heroRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -30,7 +30,7 @@ export default function Hero() {
           if (containerRef.current) {
             const scrollY = window.scrollY;
             const windowHeight = window.innerHeight;
-            
+
             const rawProgress = scrollY / windowHeight;
             const progress = Math.max(0, Math.min(1, rawProgress));
 
@@ -45,24 +45,24 @@ export default function Hero() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const isServer = typeof window === 'undefined';
   const windowHeight = !isServer ? window.innerHeight : 1000;
   const windowWidth = !isServer ? window.innerWidth : 1000;
-  
+
   const centerX = windowWidth / 2;
   const bottomY = windowHeight;
   const distX = mousePosition.x - centerX;
   const distY = mousePosition.y - bottomY;
-  
+
   const isNearBottom = !isServer && mousePosition.y > windowHeight * 0.7;
-  
+
   const rotation = isNearBottom ? Math.atan2(distX, -distY) * (180 / Math.PI) : 0;
   const clampedRotation = Math.max(-45, Math.min(45, rotation));
-  
+
   const indicatorHeight = isNearBottom ? 140 : 100;
 
   return (
@@ -88,12 +88,12 @@ export default function Hero() {
         />
 
         <div
-            className="absolute inset-0 pointer-events-none z-10"
-            style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
-                mixBlendMode: 'overlay',
-                opacity: 0.5
-            }}
+          className="absolute inset-0 pointer-events-none z-10"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
+            mixBlendMode: 'overlay',
+            opacity: 0.5
+          }}
         />
 
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)] z-10 pointer-events-none" />
@@ -109,11 +109,11 @@ export default function Hero() {
             style={{
               fontFamily: 'var(--font-editorial)',
               fontWeight: 200,
-              fontSize: 'clamp(3.5rem, 12vw, 10rem)', 
+              fontSize: 'clamp(3.5rem, 12vw, 10rem)',
               letterSpacing: '-0.03em',
             }}
           >
-            THE NEW<br/>VANGUARD
+            THE NEW<br />VANGUARD
           </h1>
         </div>
       </div>
@@ -124,7 +124,7 @@ export default function Hero() {
           transform: `translateX(-50%)`,
         }}
       >
-         <div
+        <div
           className="mb-4 text-alabaster/90 uppercase text-center mix-blend-difference"
           style={{
             fontFamily: 'var(--font-montreal)',
@@ -139,12 +139,12 @@ export default function Hero() {
         </div>
 
         <div
-            className="w-[1px] bg-alabaster/80 mix-blend-difference origin-bottom"
-            style={{
-                height: `${indicatorHeight}px`,
-                transform: `rotate(${clampedRotation}deg)`,
-                transition: 'height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.2s ease-out',
-            }}
+          className="w-[1px] bg-alabaster/80 mix-blend-difference origin-bottom"
+          style={{
+            height: `${indicatorHeight}px`,
+            transform: `rotate(${clampedRotation}deg)`,
+            transition: 'height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.2s ease-out',
+          }}
         />
       </div>
     </section>

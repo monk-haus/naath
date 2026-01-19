@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { jsPDF } from 'jspdf';
 
 interface ModelStats {
     height: string;
@@ -25,6 +26,17 @@ interface ModelData {
     digitals: ModelImage[];
 }
 
+// Helper to load image for PDF
+const loadImage = (url: string): Promise<HTMLImageElement> => {
+    return new Promise((resolve, reject) => {
+        const img = document.createElement('img');
+        img.src = url;
+        img.crossOrigin = 'Anonymous';
+        img.onload = () => resolve(img);
+        img.onerror = (err) => reject(err);
+    });
+};
+
 export default function ClientPage({ model }: { model: ModelData }) {
     const [isDigitalsOpen, setIsDigitalsOpen] = useState(false);
     const [isDownloading, setIsDownloading] = useState(false);
@@ -41,14 +53,124 @@ export default function ClientPage({ model }: { model: ModelData }) {
         };
     }, [isDigitalsOpen]);
 
-    const handleDownload = () => {
+    const handleDownload = async () => {
         setIsDownloading(true);
-        setAnimationStep(1);
-        setTimeout(() => {
+        setAnimationStep(1); // Start folder animation
+
+        try {
+            // 1. Initialize PDF (A4 Size: 210mm x 297mm)
+            const doc = new jsPDF({
+                orientation: 'portrait',
+                unit: 'mm',
+                format: 'a4',
+            });
+
+            // 2. Load Images (Parallel)
+            // We take up to 4 images: 1 main (front), 3 secondary (back)
+            const imagesToLoad = model.images.slice(0, 4).map(img => img.src);
+            const loadedImages = await Promise.all(imagesToLoad.map(src => loadImage(src)));
+
+            // --- PAGE 1: FRONT (Main Headshot + Logo + Name) ---
+
+            // Main Image (Full bleed with margins)
+            const mainImg = loadedImages[0];
+            if (mainImg) {
+                // Calculate aspect ratio to fit nicely
+                const imgRatio = mainImg.height / mainImg.width;
+                const printWidth = 180; // 15mm margins
+                const printHeight = printWidth * imgRatio;
+
+                // If image is too tall, constrain by height
+                let finalW = printWidth;
+                let finalH = printHeight;
+                if (finalH > 240) {
+                    finalH = 240;
+                    finalW = finalH / imgRatio;
+                }
+
+                const xPos = (210 - finalW) / 2; // Center horizontally
+                doc.addImage(mainImg, 'JPEG', xPos, 20, finalW, finalH);
+            }
+
+            // Footer Text (Front)
+            doc.setFont("times", "roman");
+            doc.setFontSize(24);
+            doc.text("NAATH", 105, 275, { align: "center" });
+
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(12);
+            doc.text(model.name.toUpperCase(), 105, 282, { align: "center" });
+
+
+            // --- PAGE 2: BACK (Stats + Grid + Contact) ---
+            doc.addPage();
+
+            // Stats Block (Top)
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(14);
+            doc.text(model.name.toUpperCase(), 105, 20, { align: "center" });
+
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(9);
+            const statsY = 30;
+            const colWidth = 40;
+            const startX = (210 - (colWidth * 5)) / 2; // Center the 5 columns
+
+            // Draw Stats Row
+            Object.entries(model.stats).forEach(([key, value], index) => {
+                const x = startX + (index * colWidth);
+                doc.text(key.toUpperCase(), x + (colWidth / 2), statsY, { align: "center" });
+                doc.text(value, x + (colWidth / 2), statsY + 5, { align: "center" });
+            });
+
+            // Image Grid (Middle)
+            // We use images 1, 2, and 3 from the loaded array if available
+            const secondaryImages = loadedImages.slice(1);
+            let gridY = 50;
+
+            if (secondaryImages.length > 0) {
+                // Layout depends on how many images we have. 
+                // Ideally 1 landscape top, 2 portraits bottom, or just vertical stack.
+                // Let's do a clean vertical stack for consistency or a grid if 2+.
+
+                secondaryImages.forEach((img, idx) => {
+                    if (gridY > 250) return; // Prevent overflow
+
+                    const imgRatio = img.height / img.width;
+                    // Fit into a box of 170mm width, max height 90mm per image
+                    let w = 170;
+                    let h = w * imgRatio;
+
+                    if (h > 90) {
+                        h = 90;
+                        w = h / imgRatio;
+                    }
+
+                    const x = (210 - w) / 2;
+                    doc.addImage(img, 'JPEG', x, gridY, w, h);
+                    gridY += h + 10; // Add margin for next image
+                });
+            }
+
+            // Contact Info (Bottom)
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(10);
+            doc.text("CONTACT", 105, 275, { align: "center" });
+
+            doc.setFont("helvetica", "normal");
+            doc.text("nyagua@naathmodels.com", 105, 280, { align: "center" });
+            doc.text("www.naathmodels.com", 105, 285, { align: "center" });
+
+            // Save
+            doc.save(`${model.name.replace(/\s+/g, '_')}_CompCard.pdf`);
+
+        } catch (error) {
+            console.error("PDF Generation Error:", error);
+            alert("Failed to generate PDF. Please try again.");
+        } finally {
             setIsDownloading(false);
             setAnimationStep(0);
-            alert("Comp card downloaded.");
-        }, 1500);
+        }
     };
 
     return (
@@ -125,10 +247,10 @@ export default function ClientPage({ model }: { model: ModelData }) {
                         <div
                             key={index}
                             className={`relative overflow-hidden bg-bone ${img.type === 'landscape'
-                                    ? 'w-full aspect-[16/10]'
-                                    : img.type === 'detail'
-                                        ? 'w-full md:w-2/3 mx-auto aspect-square'
-                                        : 'w-full md:w-1/2 mx-auto aspect-[3/4]'
+                                ? 'w-full aspect-[16/10]'
+                                : img.type === 'detail'
+                                    ? 'w-full md:w-2/3 mx-auto aspect-square'
+                                    : 'w-full md:w-1/2 mx-auto aspect-[3/4]'
                                 }`}
                         >
                             <Image
