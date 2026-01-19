@@ -17,6 +17,7 @@ interface ModelImage {
     src: string;
     alt: string;
     type?: 'landscape' | 'portrait' | 'detail';
+    grayscale?: boolean;
 }
 
 interface ModelData {
@@ -26,7 +27,6 @@ interface ModelData {
     digitals: ModelImage[];
 }
 
-// Helper to load image for PDF
 const loadImage = (url: string): Promise<HTMLImageElement> => {
     return new Promise((resolve, reject) => {
         const img = document.createElement('img');
@@ -55,32 +55,24 @@ export default function ClientPage({ model }: { model: ModelData }) {
 
     const handleDownload = async () => {
         setIsDownloading(true);
-        setAnimationStep(1); // Start folder animation
+        setAnimationStep(1);
 
         try {
-            // 1. Initialize PDF (A4 Size: 210mm x 297mm)
             const doc = new jsPDF({
                 orientation: 'portrait',
                 unit: 'mm',
                 format: 'a4',
             });
 
-            // 2. Load Images (Parallel)
-            // We take up to 4 images: 1 main (front), 3 secondary (back)
             const imagesToLoad = model.images.slice(0, 4).map(img => img.src);
             const loadedImages = await Promise.all(imagesToLoad.map(src => loadImage(src)));
 
-            // --- PAGE 1: FRONT (Main Headshot + Logo + Name) ---
-
-            // Main Image (Full bleed with margins)
             const mainImg = loadedImages[0];
             if (mainImg) {
-                // Calculate aspect ratio to fit nicely
                 const imgRatio = mainImg.height / mainImg.width;
-                const printWidth = 180; // 15mm margins
+                const printWidth = 180;
                 const printHeight = printWidth * imgRatio;
 
-                // If image is too tall, constrain by height
                 let finalW = printWidth;
                 let finalH = printHeight;
                 if (finalH > 240) {
@@ -88,11 +80,10 @@ export default function ClientPage({ model }: { model: ModelData }) {
                     finalW = finalH / imgRatio;
                 }
 
-                const xPos = (210 - finalW) / 2; // Center horizontally
+                const xPos = (210 - finalW) / 2;
                 doc.addImage(mainImg, 'JPEG', xPos, 20, finalW, finalH);
             }
 
-            // Footer Text (Front)
             doc.setFont("times", "roman");
             doc.setFontSize(24);
             doc.text("NAATH", 105, 275, { align: "center" });
@@ -101,11 +92,8 @@ export default function ClientPage({ model }: { model: ModelData }) {
             doc.setFontSize(12);
             doc.text(model.name.toUpperCase(), 105, 282, { align: "center" });
 
-
-            // --- PAGE 2: BACK (Stats + Grid + Contact) ---
             doc.addPage();
 
-            // Stats Block (Top)
             doc.setFont("helvetica", "bold");
             doc.setFontSize(14);
             doc.text(model.name.toUpperCase(), 105, 20, { align: "center" });
@@ -114,30 +102,22 @@ export default function ClientPage({ model }: { model: ModelData }) {
             doc.setFontSize(9);
             const statsY = 30;
             const colWidth = 40;
-            const startX = (210 - (colWidth * 5)) / 2; // Center the 5 columns
+            const startX = (210 - (colWidth * 5)) / 2;
 
-            // Draw Stats Row
             Object.entries(model.stats).forEach(([key, value], index) => {
                 const x = startX + (index * colWidth);
                 doc.text(key.toUpperCase(), x + (colWidth / 2), statsY, { align: "center" });
                 doc.text(value, x + (colWidth / 2), statsY + 5, { align: "center" });
             });
 
-            // Image Grid (Middle)
-            // We use images 1, 2, and 3 from the loaded array if available
             const secondaryImages = loadedImages.slice(1);
             let gridY = 50;
 
             if (secondaryImages.length > 0) {
-                // Layout depends on how many images we have. 
-                // Ideally 1 landscape top, 2 portraits bottom, or just vertical stack.
-                // Let's do a clean vertical stack for consistency or a grid if 2+.
-
                 secondaryImages.forEach((img, idx) => {
-                    if (gridY > 250) return; // Prevent overflow
+                    if (gridY > 250) return;
 
                     const imgRatio = img.height / img.width;
-                    // Fit into a box of 170mm width, max height 90mm per image
                     let w = 170;
                     let h = w * imgRatio;
 
@@ -148,11 +128,10 @@ export default function ClientPage({ model }: { model: ModelData }) {
 
                     const x = (210 - w) / 2;
                     doc.addImage(img, 'JPEG', x, gridY, w, h);
-                    gridY += h + 10; // Add margin for next image
+                    gridY += h + 10;
                 });
             }
 
-            // Contact Info (Bottom)
             doc.setFont("helvetica", "bold");
             doc.setFontSize(10);
             doc.text("CONTACT", 105, 275, { align: "center" });
@@ -161,7 +140,6 @@ export default function ClientPage({ model }: { model: ModelData }) {
             doc.text("nyagua@naathmodels.com", 105, 280, { align: "center" });
             doc.text("www.naathmodels.com", 105, 285, { align: "center" });
 
-            // Save
             doc.save(`${model.name.replace(/\s+/g, '_')}_CompCard.pdf`);
 
         } catch (error) {
@@ -175,8 +153,6 @@ export default function ClientPage({ model }: { model: ModelData }) {
 
     return (
         <main className="min-h-screen bg-alabaster w-full overflow-x-hidden">
-
-            {/* --- Sticky Header --- */}
             <header className="sticky top-0 left-0 right-0 z-[60] bg-alabaster border-b border-clay/10 transition-all duration-300">
                 <div className="max-w-[1800px] mx-auto px-6 md:px-12 h-[60px] flex justify-between items-center">
                     <Link
@@ -208,7 +184,6 @@ export default function ClientPage({ model }: { model: ModelData }) {
                 </div>
             </header>
 
-            {/* --- Intro & Stats --- */}
             <section className="pt-24 pb-16 px-6 md:px-12 bg-alabaster">
                 <div className="max-w-[1200px] mx-auto">
                     <h1
@@ -240,17 +215,16 @@ export default function ClientPage({ model }: { model: ModelData }) {
                 </div>
             </section>
 
-            {/* --- Image Feed --- */}
             <section className="px-6 md:px-12 pb-32">
                 <div className="max-w-[1200px] mx-auto flex flex-col gap-20 md:gap-32">
                     {model.images.map((img, index) => (
                         <div
                             key={index}
                             className={`relative overflow-hidden bg-bone ${img.type === 'landscape'
-                                ? 'w-full aspect-[16/10]'
-                                : img.type === 'detail'
-                                    ? 'w-full md:w-2/3 mx-auto aspect-square'
-                                    : 'w-full md:w-1/2 mx-auto aspect-[3/4]'
+                                    ? 'w-full aspect-[16/10]'
+                                    : img.type === 'detail'
+                                        ? 'w-full md:w-2/3 mx-auto aspect-square'
+                                        : 'w-full md:w-1/2 mx-auto aspect-[3/4]'
                                 }`}
                         >
                             <Image
@@ -261,6 +235,7 @@ export default function ClientPage({ model }: { model: ModelData }) {
                                 className="object-cover"
                                 style={{
                                     ...(index === 0 ? { objectPosition: 'top center' } : {}),
+                                    filter: img.grayscale ? 'grayscale(100%)' : 'none',
                                 }}
                                 sizes="90vw"
                                 quality={90}
@@ -271,7 +246,6 @@ export default function ClientPage({ model }: { model: ModelData }) {
                 </div>
             </section>
 
-            {/* --- Download Footer --- */}
             <section className="bg-bone py-32 px-6 md:px-12 border-t border-clay/10 relative overflow-hidden">
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center justify-center">
                     <div className="relative h-40 w-full flex justify-center items-center mb-10">
@@ -308,7 +282,6 @@ export default function ClientPage({ model }: { model: ModelData }) {
                 </div>
             </section>
 
-            {/* --- Digitals Drawer --- */}
             <div
                 className={`fixed inset-0 z-[70] bg-charcoal/20 backdrop-blur-sm transition-opacity duration-500 overflow-hidden ${isDigitalsOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                     }`}

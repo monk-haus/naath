@@ -2,10 +2,8 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import ClientPage from './ClientPage';
 
-// FIX: This line is required for Cloudflare Pages dynamic routes
 export const runtime = 'edge';
 
-// --- Data Definition ---
 interface ModelStats {
   height: string;
   bust: string;
@@ -18,6 +16,7 @@ interface ModelImage {
   src: string;
   alt: string;
   type?: 'landscape' | 'portrait' | 'detail';
+  grayscale?: boolean;
 }
 
 interface ModelData {
@@ -39,7 +38,7 @@ const modelData: Record<string, ModelData> = {
     },
     images: [
       { src: '/assets/images/models/fatima-fawaz/fatima-1.webp', alt: 'Editorial Landscape', type: 'landscape' },
-      { src: '/assets/images/models/fatima-fawaz/fatima-2.webp', alt: 'Portrait 1', type: 'portrait' },
+      { src: '/assets/images/models/fatima-fawaz/fatima-2.webp', alt: 'Portrait 1', type: 'portrait', grayscale: true },
       { src: '/assets/images/models/fatima-fawaz/fatima-3.webp', alt: 'Portrait 2', type: 'portrait' },
       { src: '/assets/images/models/fatima-fawaz/fatima-4.webp', alt: 'Detail Shot', type: 'detail' },
     ],
@@ -55,7 +54,6 @@ type Props = {
   params: Promise<{ slug: string }>
 };
 
-// --- Dynamic Metadata Generation ---
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
@@ -67,8 +65,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  // OPTIMIZATION: Social platforms (Twitter/X) prefer Landscape images (1.91:1 ratio).
-  // We try to find a 'landscape' image first. If none exists, we fall back to the main portrait.
   const socialImageObj = model.images.find(img => img.type === 'landscape') || model.images[0];
   const socialImageSrc = socialImageObj?.src || '/og-image.jpg';
 
@@ -81,7 +77,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      // MetadataBase in layout.tsx will resolve this relative path automatically
       images: [
         {
           url: socialImageSrc,
@@ -100,7 +95,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// --- Main Page Component ---
 export default async function Page({ params }: Props) {
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
@@ -110,7 +104,6 @@ export default async function Page({ params }: Props) {
     notFound();
   }
 
-  // Google Structured Data (JSON-LD)
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
