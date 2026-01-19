@@ -2,6 +2,9 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import ClientPage from './ClientPage';
 
+// FIX: This line is required for Cloudflare Pages dynamic routes
+export const runtime = 'edge';
+
 // --- Data Definition ---
 interface ModelStats {
   height: string;
@@ -54,7 +57,6 @@ type Props = {
 
 // --- Dynamic Metadata Generation ---
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  // FIX: Await the params before accessing slug
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
   const model = modelData[slug];
@@ -95,7 +97,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // --- Main Page Component ---
 export default async function Page({ params }: Props) {
-  // FIX: Await the params before accessing slug
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
   const model = modelData[slug];
