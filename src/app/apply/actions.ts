@@ -2,35 +2,38 @@
 
 import { Resend } from 'resend';
 
+// REMOVED: export const runtime = 'edge'; 
+// (This configuration belongs in page.tsx, not here)
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 interface ApplicationData {
-    fullName: string;
-    age: string;
-    cityCountry: string;
-    instagram: string;
-    height: string;
-    bust: string;
-    waist: string;
-    hips: string;
-    shoeSize: string;
-    images: {
-        headshot: string;
-        profile: string;
-        waistUp: string;
-        fullLength: string;
-    };
+  fullName: string;
+  age: string;
+  cityCountry: string;
+  instagram: string;
+  height: string;
+  bust: string;
+  waist: string;
+  hips: string;
+  shoeSize: string;
+  images: {
+    headshot: string;
+    profile: string;
+    waistUp: string;
+    fullLength: string;
+  };
 }
 
 export async function submitApplication(data: ApplicationData) {
-    const directorEmail = process.env.DIRECTOR_EMAIL;
+  const directorEmail = process.env.DIRECTOR_EMAIL;
 
-    if (!directorEmail) {
-        return { success: false, error: 'Director email not configured' };
-    }
+  if (!directorEmail) {
+    return { success: false, error: 'Director email not configured' };
+  }
 
-    try {
-        const emailHtml = `
+  try {
+    const emailHtml = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -184,23 +187,23 @@ export async function submitApplication(data: ApplicationData) {
 </html>
     `;
 
-        const result = await resend.emails.send({
-            from: 'Naath Applications <onboarding@resend.dev>',
-            to: directorEmail,
-            subject: `New Application: ${data.fullName}`,
-            html: emailHtml,
-        });
+    const result = await resend.emails.send({
+      from: 'Naath Applications <onboarding@resend.dev>',
+      to: directorEmail,
+      subject: `New Application: ${data.fullName}`,
+      html: emailHtml,
+    });
 
-        console.log('Resend result:', result);
+    console.log('Resend result:', result);
 
-        if (result.error) {
-            console.error('Resend error:', result.error);
-            return { success: false, error: result.error.message };
-        }
-
-        return { success: true };
-    } catch (error) {
-        console.error('Failed to send application email:', error);
-        return { success: false, error: 'Failed to send application' };
+    if (result.error) {
+      console.error('Resend error:', result.error);
+      return { success: false, error: result.error.message };
     }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Failed to send application email:', error);
+    return { success: false, error: 'Failed to send application' };
+  }
 }
