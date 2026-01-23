@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { uploadToCloudinary } from '@/lib/cloudinary';
 import { submitApplication } from './actions';
 
@@ -509,20 +510,41 @@ export default function ApplyPage() {
             </div>
           </section>
 
-          <div className="pt-12 pb-24">
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-charcoal text-alabaster py-6 uppercase transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed hover:bg-clay active:scale-[0.98] outline-none"
+          <div className="space-y-6 text-center">
+            <p
+              className="text-stone max-w-md mx-auto"
               style={{
                 fontFamily: 'var(--font-montreal)',
-                fontSize: '11px',
-                fontWeight: 600,
-                letterSpacing: '0.25em',
+                fontSize: '0.7rem',
+                lineHeight: '1.6',
+                opacity: 0.8,
+                letterSpacing: '0.02em'
               }}
             >
-              {isSubmitting ? (submitStatus || 'PROCESSING...') : 'SEND TO BOARD'}
-            </button>
+              By clicking &apos;SEND TO BOARD&apos;:<br />
+              I confirm that I have read and accept the{' '}
+              <Link href="/terms-conditions" className="underline hover:text-charcoal transition-colors" target="_blank">Terms & Conditions</Link>
+              {' '}and{' '}
+              <Link href="/privacy-policy" className="underline hover:text-charcoal transition-colors" target="_blank">Privacy Policy</Link>.
+              <br className="mb-2" />
+              I also give permission to be contacted by email or telephone.
+            </p>
+
+            <div className="pb-24">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-charcoal text-alabaster py-6 uppercase transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed hover:bg-clay active:scale-[0.98] outline-none"
+                style={{
+                  fontFamily: 'var(--font-montreal)',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  letterSpacing: '0.25em',
+                }}
+              >
+                {isSubmitting ? (submitStatus || 'PROCESSING...') : 'SEND TO BOARD'}
+              </button>
+            </div>
           </div>
         </form>
       </div>

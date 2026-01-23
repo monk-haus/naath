@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 export default function Footer() {
   return (
     <footer className="relative bg-charcoal text-alabaster pt-24 pb-10 px-6 md:px-12 overflow-hidden w-full">
@@ -87,11 +89,25 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-20 md:mt-32 w-full flex flex-col md:flex-row justify-between items-center border-t border-white/5 pt-8 gap-4">
-          <div className="hidden md:block"></div>
+        <div className="mt-20 md:mt-32 w-full flex flex-col md:flex-row justify-between items-center border-t border-white/5 pt-8 gap-6 md:gap-0">
+
+          <div className="flex gap-6 md:gap-8 order-2 md:order-1">
+            <Link
+              href="/privacy-policy"
+              className="text-stone hover:text-alabaster transition-colors uppercase tracking-widest text-[9px] font-montreal"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms-conditions"
+              className="text-stone hover:text-alabaster transition-colors uppercase tracking-widest text-[9px] font-montreal"
+            >
+              Terms & Conditions
+            </Link>
+          </div>
 
           <div
-            className="text-stone text-center md:text-right"
+            className="text-stone text-center md:text-right order-1 md:order-2"
             style={{
               fontFamily: 'var(--font-montreal)',
               fontSize: '10px',
