@@ -65,7 +65,6 @@ const modelData: Record<string, ModelData> = {
       { src: '/assets/images/models/nyanhial-kueii/639BB0AD-DDC6-4258-98AC-8FCE037D3493.webp', alt: 'Portfolio 5', type: 'portrait' },
       { src: '/assets/images/models/nyanhial-kueii/679A483C-5117-4A3C-BB60-6BA2ECC3FCD5.webp', alt: 'Portfolio 6', type: 'portrait' },
       { src: '/assets/images/models/nyanhial-kueii/IMG_0350.webp', alt: 'Portfolio 7', type: 'portrait' },
-      { src: '/assets/images/models/nyanhial-kueii/F10B5D43-9E3E-468B-849B-11533FCD7D03.webp', alt: 'Portfolio 8', type: 'portrait' },
       { src: '/assets/images/models/nyanhial-kueii/IMG_0353.webp', alt: 'Portfolio 10', type: 'portrait' },
       { src: '/assets/images/models/nyanhial-kueii/B82D6A59-98D2-4B12-B262-439674AB0293.webp', alt: 'Portfolio 13', type: 'landscape' },
     ],
