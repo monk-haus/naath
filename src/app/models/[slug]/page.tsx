@@ -53,7 +53,7 @@ const modelData: Record<string, ModelData> = {
     stats: {
       height: '180cm / 5\'11"',
       bust: '76cm / 30"',
-      waist: '51cm / 20"',
+      waist: '58cm / 23"',
       hips: '84cm / 33"',
       shoe: '40 EU / 10 US',
     },
@@ -69,9 +69,10 @@ const modelData: Record<string, ModelData> = {
       { src: '/assets/images/models/nyanhial-kueii/B82D6A59-98D2-4B12-B262-439674AB0293.webp', alt: 'Portfolio 13', type: 'landscape' },
     ],
     digitals: [
-      { src: '/assets/images/models/nyanhial-kueii/naya_-19.webp', alt: 'Digital 1' },
-      { src: '/assets/images/models/nyanhial-kueii/IMG_2067.webp', alt: 'Digital 2' },
-      { src: '/assets/images/models/nyanhial-kueii/IMG_2064.webp', alt: 'Digital 3' },
+      { src: '/assets/images/models/nyanhial-kueii/digital-2.webp', alt: 'Digital 1' },
+      { src: '/assets/images/models/nyanhial-kueii/digital-1.webp', alt: 'Digital 2' },
+      { src: '/assets/images/models/nyanhial-kueii/digital-3.webp', alt: 'Digital 3' },
+      { src: '/assets/images/models/nyanhial-kueii/digital-4.webp', alt: 'Digital 4' },
     ],
   },
 };
