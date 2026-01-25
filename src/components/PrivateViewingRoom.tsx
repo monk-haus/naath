@@ -57,6 +57,14 @@ export default function PrivateViewingRoom() {
       specs: '179cm / 5\'10.5"',
       href: '/models/fatima',
     },
+    {
+      id: 'nyanhial',
+      name: 'Nyanhial K.',
+      image: '/assets/images/model-2.webp',
+      alt: 'Nyanhial K Portfolio',
+      specs: '180cm / 5\'11"',
+      href: '/models/nyanhial-kueii',
+    },
   ];
 
   return (
@@ -78,7 +86,7 @@ export default function PrivateViewingRoom() {
           className="text-stone text-[10px] uppercase tracking-widest font-medium mb-2 hidden md:block"
           style={{ fontFamily: 'var(--font-montreal)' }}
         >
-          Currently Representing (01)
+          Currently Representing (02)
         </span>
       </div>
 
@@ -172,7 +180,7 @@ export default function PrivateViewingRoom() {
               style={{
                 fontFamily: 'var(--font-editorial)',
                 fontWeight: 200,
-                fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
               }}
             >
               You could be
