@@ -29,15 +29,15 @@ export default function ModelsPage() {
   const models = [
     {
       id: 'fatima',
-      name: 'FATIMA',
+      name: 'FATIMA F.',
       slug: 'fatima',
       image: '/assets/images/models/fatima-fawaz/fatima-5.webp',
       alt: 'Fatima F',
     },
     {
       id: 'nyanhial',
-      name: 'NYANHIAL K',
-      slug: 'nyanhial-kueii',
+      name: 'NYANHIAL K.',
+      slug: 'nyanhial-k',
       image: '/assets/images/model-2.webp',
       alt: 'Nyanhial K',
     },

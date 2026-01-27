@@ -63,7 +63,7 @@ export default function PrivateViewingRoom() {
       image: '/assets/images/model-2.webp',
       alt: 'Nyanhial K Portfolio',
       specs: '180cm / 5\'11"',
-      href: '/models/nyanhial-kueii',
+      href: '/models/nyanhial-k',
     },
   ];
 

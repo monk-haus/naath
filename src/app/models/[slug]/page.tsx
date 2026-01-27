@@ -48,8 +48,8 @@ const modelData: Record<string, ModelData> = {
       { src: '/assets/images/models/fatima-fawaz/fatima-digital-3.webp', alt: 'Digital 3' },
     ],
   },
-  'nyanhial-kueii': {
-    name: 'Nyanhial Kueii',
+  'nyanhial-k': {
+    name: 'Nyanhial K.',
     stats: {
       height: '180cm / 5\'11"',
       bust: '76cm / 30"',
