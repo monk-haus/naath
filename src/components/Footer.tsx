@@ -1,8 +1,34 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
+import { supabase } from '@/lib/supabase';
 
 export default function Footer() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus('loading');
+
+    try {
+      const { error } = await supabase.functions.invoke('subscribe', {
+        body: { email },
+      });
+
+      if (error) throw error;
+
+      setStatus('success');
+      setEmail('');
+    } catch (err) {
+      console.error(err);
+      setStatus('error');
+    }
+  };
+
   return (
     <footer className="relative bg-charcoal text-alabaster pt-24 pb-10 px-6 md:px-12 overflow-hidden w-full">
       <div className="hidden md:block absolute bottom-[-2%] left-[-2%] pointer-events-none select-none z-0">
@@ -34,7 +60,48 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-16 md:gap-0">
-          <div className="hidden md:block flex-1 h-20"></div>
+
+          <div className="w-full md:w-auto flex flex-col justify-start md:mb-2">
+            <div className="mb-6">
+              <span className="text-[10px] uppercase tracking-widest text-stone font-montreal block mb-2">
+                The Masterclass
+              </span>
+              <p
+                className="text-alabaster/80 max-w-xs leading-relaxed"
+                style={{
+                  fontFamily: 'var(--font-montreal)',
+                  fontSize: '13px',
+                  fontWeight: 300
+                }}
+              >
+                Join the waitlist for our upcoming education series on modeling and development.
+              </p>
+            </div>
+
+            <form onSubmit={handleSubscribe} className="relative max-w-xs w-full group">
+              <input
+                type="email"
+                placeholder="EMAIL ADDRESS"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={status === 'loading' || status === 'success'}
+                className="w-full bg-transparent border-b border-stone/30 py-3 text-alabaster text-sm placeholder:text-stone/50 focus:outline-none focus:border-alabaster transition-colors rounded-none font-montreal tracking-wider uppercase"
+              />
+              <button
+                type="submit"
+                disabled={status === 'loading' || status === 'success'}
+                className="absolute right-0 top-3 text-[10px] uppercase tracking-widest text-stone hover:text-alabaster transition-colors disabled:opacity-50"
+                style={{ fontFamily: 'var(--font-montreal)' }}
+              >
+                {status === 'loading' ? '...' : status === 'success' ? 'JOINED' : 'SUBMIT'}
+              </button>
+            </form>
+            {status === 'error' && (
+              <span className="text-[10px] text-red-400 mt-2 font-montreal tracking-wider uppercase">
+                Something went wrong.
+              </span>
+            )}
+          </div>
 
           <div className="w-full md:w-auto flex flex-col items-center md:items-end gap-10 md:gap-8 text-center md:text-right">
             <div className="flex flex-col items-center md:items-end group">
