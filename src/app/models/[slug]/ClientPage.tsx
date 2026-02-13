@@ -236,7 +236,7 @@ export default function ClientPage({ model }: { model: ModelData }) {
                         href="/models"
                         className="group flex items-center gap-2 uppercase text-charcoal hover:text-stone transition-colors cursor-pointer"
                         style={{
-                            fontFamily: 'var(--font-montreal)',
+                            fontFamily: 'var(--font-geist)',
                             fontSize: '11px',
                             fontWeight: 500,
                             letterSpacing: '0.15em',
@@ -250,7 +250,7 @@ export default function ClientPage({ model }: { model: ModelData }) {
                         onClick={() => setIsDigitalsOpen(true)}
                         className="uppercase text-charcoal hover:text-clay transition-colors border border-charcoal/20 px-4 py-1.5 rounded-full hover:border-clay cursor-pointer bg-transparent"
                         style={{
-                            fontFamily: 'var(--font-montreal)',
+                            fontFamily: 'var(--font-geist)',
                             fontSize: '10px',
                             fontWeight: 600,
                             letterSpacing: '0.15em',
@@ -266,8 +266,8 @@ export default function ClientPage({ model }: { model: ModelData }) {
                     <h1
                         className="text-charcoal mb-12 leading-[0.9]"
                         style={{
-                            fontFamily: 'var(--font-editorial)',
-                            fontWeight: 200,
+                            fontFamily: 'var(--font-instrument)',
+                            fontWeight: 400,
                             fontSize: 'clamp(3.5rem, 8vw, 6rem)',
                         }}
                     >
@@ -277,7 +277,7 @@ export default function ClientPage({ model }: { model: ModelData }) {
                     <div
                         className="grid grid-cols-2 md:grid-cols-5 gap-y-6 gap-x-8 border-t border-clay/30 pt-8"
                         style={{
-                            fontFamily: 'var(--font-montreal)',
+                            fontFamily: 'var(--font-geist)',
                             fontSize: '13px',
                             letterSpacing: '0.05em',
                         }}
@@ -334,7 +334,7 @@ export default function ClientPage({ model }: { model: ModelData }) {
                         )}
                         {animationStep === 0 && !isDownloading && (
                             <div className="w-24 h-32 border-2 border-dashed border-clay/30 rounded-sm flex items-center justify-center">
-                                <span className="text-clay text-2xl font-editorial italic">PDF</span>
+                                <span className="text-clay text-2xl font-instrument italic">PDF</span>
                             </div>
                         )}
                     </div>
@@ -347,7 +347,7 @@ export default function ClientPage({ model }: { model: ModelData }) {
                         <span
                             className="relative z-10 uppercase"
                             style={{
-                                fontFamily: 'var(--font-montreal)',
+                                fontFamily: 'var(--font-geist)',
                                 fontSize: '11px',
                                 fontWeight: 600,
                                 letterSpacing: '0.2em',
@@ -373,9 +373,9 @@ export default function ClientPage({ model }: { model: ModelData }) {
                         <h2
                             className="text-charcoal"
                             style={{
-                                fontFamily: 'var(--font-editorial)',
+                                fontFamily: 'var(--font-instrument)',
                                 fontSize: '2rem',
-                                fontWeight: 200,
+                                fontWeight: 400,
                             }}
                         >
                             Raw Digitals
@@ -389,7 +389,7 @@ export default function ClientPage({ model }: { model: ModelData }) {
                     </div>
 
                     <div className="p-8 overflow-y-auto flex-1 space-y-6">
-                        <p className="text-stone text-xs font-montreal mb-8 leading-relaxed">
+                        <p className="text-stone text-xs font-geist mb-8 leading-relaxed">
                             Unretouched polaroids. Natural light. No makeup.
                             <br />Updated: January 2026.
                         </p>
