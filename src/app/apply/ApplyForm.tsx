@@ -173,8 +173,8 @@ export default function ApplyPage() {
           <h1
             className="text-charcoal"
             style={{
-              fontFamily: 'var(--font-editorial)',
-              fontWeight: 200,
+              fontFamily: 'var(--font-instrument)',
+              fontWeight: 400,
               fontSize: 'clamp(3rem, 6vw, 5rem)',
               letterSpacing: '-0.02em',
             }}
@@ -185,7 +185,7 @@ export default function ApplyPage() {
           <div
             className="text-charcoal space-y-6 leading-relaxed"
             style={{
-              fontFamily: 'var(--font-montreal)',
+              fontFamily: 'var(--font-geist)',
               fontSize: '1rem',
               lineHeight: '1.8',
             }}
@@ -203,7 +203,7 @@ export default function ApplyPage() {
             <div
               className="text-charcoal italic opacity-80"
               style={{
-                fontFamily: 'var(--font-editorial)',
+                fontFamily: 'var(--font-instrument)',
                 fontWeight: 400,
                 fontSize: '1.5rem',
               }}
@@ -223,8 +223,8 @@ export default function ApplyPage() {
           <h1
             className="text-charcoal mb-8 leading-none"
             style={{
-              fontFamily: 'var(--font-editorial)',
-              fontWeight: 200,
+              fontFamily: 'var(--font-instrument)',
+              fontWeight: 400,
               fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
               letterSpacing: '-0.02em',
             }}
@@ -235,7 +235,7 @@ export default function ApplyPage() {
           <div
             className="text-stone mb-10 leading-relaxed max-w-sm mx-auto"
             style={{
-              fontFamily: 'var(--font-montreal)',
+              fontFamily: 'var(--font-geist)',
               fontSize: '0.875rem',
               lineHeight: '1.8',
             }}
@@ -251,7 +251,7 @@ export default function ApplyPage() {
             onClick={() => setShowGuidelines(!showGuidelines)}
             className="text-charcoal hover:text-clay transition-colors uppercase border-b border-transparent hover:border-clay pb-1 outline-none"
             style={{
-              fontFamily: 'var(--font-montreal)',
+              fontFamily: 'var(--font-geist)',
               fontSize: '10px',
               fontWeight: 600,
               letterSpacing: '0.2em',
@@ -268,8 +268,8 @@ export default function ApplyPage() {
               <h3
                 className="text-charcoal text-center"
                 style={{
-                  fontFamily: 'var(--font-editorial)',
-                  fontWeight: 200,
+                  fontFamily: 'var(--font-instrument)',
+                  fontWeight: 400,
                   fontSize: '1.75rem',
                 }}
               >
@@ -295,7 +295,7 @@ export default function ApplyPage() {
                     <span
                       className="block text-stone uppercase text-center opacity-60"
                       style={{
-                        fontFamily: 'var(--font-montreal)',
+                        fontFamily: 'var(--font-geist)',
                         fontSize: '10px',
                         letterSpacing: '0.15em',
                       }}
@@ -314,8 +314,8 @@ export default function ApplyPage() {
             <h2
               className="text-charcoal mb-8 border-b border-clay/10 pb-4"
               style={{
-                fontFamily: 'var(--font-editorial)',
-                fontWeight: 200,
+                fontFamily: 'var(--font-instrument)',
+                fontWeight: 400,
                 fontSize: '1.75rem',
                 letterSpacing: '-0.01em',
               }}
@@ -334,7 +334,7 @@ export default function ApplyPage() {
                   <label
                     className="block mb-3 text-stone uppercase transition-colors group-focus-within:text-charcoal"
                     style={{
-                      fontFamily: 'var(--font-montreal)',
+                      fontFamily: 'var(--font-geist)',
                       fontSize: '9px',
                       fontWeight: 600,
                       letterSpacing: '0.2em',
@@ -348,7 +348,7 @@ export default function ApplyPage() {
                     onChange={(e) => handleInputChange(field.key, e.target.value)}
                     className="w-full bg-transparent border-0 border-b border-clay/40 focus:outline-none focus:ring-0 focus:border-charcoal transition-all duration-300 pb-2 rounded-none appearance-none"
                     style={{
-                      fontFamily: 'var(--font-editorial)',
+                      fontFamily: 'var(--font-instrument)',
                       fontWeight: 400,
                       fontStyle: 'italic',
                       fontSize: '1.25rem',
@@ -365,8 +365,8 @@ export default function ApplyPage() {
             <h2
               className="text-charcoal mb-8 border-b border-clay/10 pb-4"
               style={{
-                fontFamily: 'var(--font-editorial)',
-                fontWeight: 200,
+                fontFamily: 'var(--font-instrument)',
+                fontWeight: 400,
                 fontSize: '1.75rem',
                 letterSpacing: '-0.01em',
               }}
@@ -386,7 +386,7 @@ export default function ApplyPage() {
                   <label
                     className="block mb-3 text-stone uppercase transition-colors group-focus-within:text-charcoal"
                     style={{
-                      fontFamily: 'var(--font-montreal)',
+                      fontFamily: 'var(--font-geist)',
                       fontSize: '9px',
                       fontWeight: 600,
                       letterSpacing: '0.2em',
@@ -400,7 +400,7 @@ export default function ApplyPage() {
                     onChange={(e) => handleInputChange(field.key, e.target.value)}
                     className="w-full bg-transparent border-0 border-b border-clay/40 focus:outline-none focus:ring-0 focus:border-charcoal transition-all duration-300 pb-2 rounded-none appearance-none"
                     style={{
-                      fontFamily: 'var(--font-editorial)',
+                      fontFamily: 'var(--font-instrument)',
                       fontWeight: 400,
                       fontStyle: 'italic',
                       fontSize: '1.25rem',
@@ -416,7 +416,7 @@ export default function ApplyPage() {
               <div
                 className="text-stone text-sm leading-relaxed border-l border-clay pl-4 py-1 italic"
                 style={{
-                  fontFamily: 'var(--font-montreal)',
+                  fontFamily: 'var(--font-geist)',
                   fontSize: '0.8rem',
                 }}
               >
@@ -430,8 +430,8 @@ export default function ApplyPage() {
             <h2
               className="text-charcoal mb-8 border-b border-clay/10 pb-4"
               style={{
-                fontFamily: 'var(--font-editorial)',
-                fontWeight: 200,
+                fontFamily: 'var(--font-instrument)',
+                fontWeight: 400,
                 fontSize: '1.75rem',
                 letterSpacing: '-0.01em',
               }}
@@ -450,7 +450,7 @@ export default function ApplyPage() {
                   <label
                     className="block text-stone uppercase text-center opacity-70"
                     style={{
-                      fontFamily: 'var(--font-montreal)',
+                      fontFamily: 'var(--font-geist)',
                       fontSize: '9px',
                       fontWeight: 600,
                       letterSpacing: '0.15em',
@@ -479,7 +479,7 @@ export default function ApplyPage() {
                           className="w-full h-full object-cover grayscale"
                         />
                         <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors flex items-center justify-center">
-                          <span className="opacity-0 group-hover:opacity-100 text-alabaster font-montreal text-[10px] uppercase tracking-widest bg-charcoal/80 px-3 py-1.5 backdrop-blur-md">Replace</span>
+                          <span className="opacity-0 group-hover:opacity-100 text-alabaster font-geist text-[10px] uppercase tracking-widest bg-charcoal/80 px-3 py-1.5 backdrop-blur-md">Replace</span>
                         </div>
                       </div>
                     ) : (
@@ -488,7 +488,7 @@ export default function ApplyPage() {
                         <span
                           className={`uppercase transition-colors ${dragActive === frame.key ? 'text-charcoal' : 'text-clay/60'}`}
                           style={{
-                            fontFamily: 'var(--font-montreal)',
+                            fontFamily: 'var(--font-geist)',
                             fontSize: '9px',
                             letterSpacing: '0.15em',
                           }}
@@ -514,7 +514,7 @@ export default function ApplyPage() {
             <p
               className="text-stone max-w-md mx-auto"
               style={{
-                fontFamily: 'var(--font-montreal)',
+                fontFamily: 'var(--font-geist)',
                 fontSize: '0.7rem',
                 lineHeight: '1.6',
                 opacity: 0.8,
@@ -536,7 +536,7 @@ export default function ApplyPage() {
                 disabled={isSubmitting}
                 className="w-full bg-charcoal text-alabaster py-6 uppercase transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed hover:bg-clay active:scale-[0.98] outline-none"
                 style={{
-                  fontFamily: 'var(--font-montreal)',
+                  fontFamily: 'var(--font-geist)',
                   fontSize: '11px',
                   fontWeight: 600,
                   letterSpacing: '0.25em',
