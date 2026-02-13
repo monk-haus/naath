@@ -50,7 +50,7 @@ export default function NotFound() {
           
           <div 
              className="text-center text-charcoal/60"
-             style={{ fontFamily: 'var(--font-editorial)', fontStyle: 'italic', fontSize: '1.25rem' }}
+             style={{ fontFamily: 'var(--font-instrument)', fontStyle: 'italic', fontSize: '1.25rem' }}
           >
              Untitled No. 404
           </div>
@@ -61,15 +61,15 @@ export default function NotFound() {
         <h1 
           className="text-alabaster leading-none"
           style={{
-            fontFamily: 'var(--font-editorial)',
-            fontWeight: 200,
+            fontFamily: 'var(--font-instrument)',
+            fontWeight: 400,
             fontSize: 'clamp(3rem, 5vw, 5rem)',
           }}
         >
           A misplacement.
         </h1>
         <p 
-          className="text-stone font-montreal text-sm tracking-wide max-w-md mx-auto"
+          className="text-stone font-geist text-sm tracking-wide max-w-md mx-auto"
         >
           The artifact you are looking for has not been developed yet.
         </p>
@@ -78,7 +78,7 @@ export default function NotFound() {
            <Link 
              href="/"
              className="text-alabaster border-b border-alabaster/30 pb-1 hover:border-alabaster transition-all uppercase text-[10px] tracking-[0.25em]"
-             style={{ fontFamily: 'var(--font-montreal)' }}
+             style={{ fontFamily: 'var(--font-geist)' }}
            >
              Return to Studio
            </Link>
