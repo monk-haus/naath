@@ -1,6 +1,21 @@
 import type { Metadata, Viewport } from "next";
+import { Instrument_Serif, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  variable: "--font-instrument",
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://naathmodels.com'),
@@ -74,8 +89,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="antialiased bg-alabaster text-charcoal min-h-screen flex flex-col w-full max-w-[100vw]">
+    <html lang="en" className={`scroll-smooth ${instrumentSerif.variable} ${geistMono.variable}`}>
+      <body className="antialiased bg-alabaster text-charcoal min-h-screen flex flex-col w-full max-w-[100vw] font-geist">
         <Header />
         <div className="flex-grow w-full relative">
           {children}
