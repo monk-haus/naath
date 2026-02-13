@@ -78,13 +78,13 @@ export default function PrivateViewingRoom() {
       <div className="px-6 md:px-20 mb-12 md:mb-20 flex items-end justify-between">
         <h3
           className="text-charcoal text-5xl md:text-7xl leading-none"
-          style={{ fontFamily: 'var(--font-editorial)', fontWeight: 200 }}
+          style={{ fontFamily: 'var(--font-instrument)', fontWeight: 400 }}
         >
           The Roster
         </h3>
         <span
           className="text-stone text-[10px] uppercase tracking-widest font-medium mb-2 hidden md:block"
-          style={{ fontFamily: 'var(--font-montreal)' }}
+          style={{ fontFamily: 'var(--font-geist)' }}
         >
           Currently Representing (02)
         </span>
@@ -142,7 +142,7 @@ export default function PrivateViewingRoom() {
                   <span
                     className="text-3xl md:text-5xl text-charcoal italic"
                     style={{
-                      fontFamily: 'var(--font-editorial)',
+                      fontFamily: 'var(--font-instrument)',
                       fontWeight: 400,
                     }}
                   >
@@ -151,7 +151,7 @@ export default function PrivateViewingRoom() {
                   <span
                     className="text-[10px] text-stone mt-2"
                     style={{
-                      fontFamily: 'var(--font-montreal)',
+                      fontFamily: 'var(--font-geist)',
                       fontWeight: 400,
                       letterSpacing: '0.05em',
                     }}
@@ -178,8 +178,8 @@ export default function PrivateViewingRoom() {
             <h4
               className="text-charcoal mb-6 md:mb-8 leading-tight"
               style={{
-                fontFamily: 'var(--font-editorial)',
-                fontWeight: 200,
+                fontFamily: 'var(--font-instrument)',
+                fontWeight: 400,
                 fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
               }}
             >
@@ -190,7 +190,7 @@ export default function PrivateViewingRoom() {
             <p
               className="text-stone max-w-[220px] mb-8 md:mb-10 leading-relaxed"
               style={{
-                fontFamily: 'var(--font-montreal)',
+                fontFamily: 'var(--font-geist)',
                 fontSize: '0.75rem',
                 fontWeight: 400,
               }}
@@ -201,7 +201,7 @@ export default function PrivateViewingRoom() {
               <button
                 className="px-8 py-3 md:px-10 md:py-4 border border-charcoal text-charcoal hover:bg-charcoal hover:text-alabaster transition-all duration-300 uppercase tracking-[0.25em] cursor-pointer"
                 style={{
-                  fontFamily: 'var(--font-montreal)',
+                  fontFamily: 'var(--font-geist)',
                   fontSize: '10px',
                   fontWeight: 500,
                 }}
@@ -244,7 +244,7 @@ export default function PrivateViewingRoom() {
           <span
             className="text-charcoal uppercase text-center leading-none"
             style={{
-              fontFamily: 'var(--font-montreal)',
+              fontFamily: 'var(--font-geist)',
               fontSize: '9px',
               fontWeight: 600,
               letterSpacing: '0.15em',
