@@ -99,16 +99,16 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)] z-10 pointer-events-none" />
 
         <div className="absolute inset-0 z-20 pointer-events-none p-4 md:p-8 mix-blend-difference text-white/90">
-          <span className="absolute bottom-4 left-4 md:bottom-8 md:left-8 text-[9px] md:text-[10px] tracking-[0.2em] font-medium font-montreal hidden md:block">CURATED ROSTER</span>
-          <span className="absolute bottom-4 right-4 md:bottom-8 md:right-8 text-[9px] md:text-[10px] tracking-[0.2em] font-medium font-montreal hidden md:block">NBO / JUB </span>
+          <span className="absolute bottom-4 left-4 md:bottom-8 md:left-8 text-[9px] md:text-[10px] tracking-[0.2em] font-medium font-geist hidden md:block">CURATED ROSTER</span>
+          <span className="absolute bottom-4 right-4 md:bottom-8 md:right-8 text-[9px] md:text-[10px] tracking-[0.2em] font-medium font-geist hidden md:block">NBO / JUB </span>
         </div>
 
         <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none mix-blend-difference text-white px-4">
           <h1
             className="text-center leading-[0.85] italic animate-fade-in max-w-full"
             style={{
-              fontFamily: 'var(--font-editorial)',
-              fontWeight: 200,
+              fontFamily: 'var(--font-instrument)',
+              fontWeight: 400,
               fontSize: 'clamp(3.5rem, 12vw, 10rem)',
               letterSpacing: '-0.03em',
             }}
@@ -127,7 +127,7 @@ export default function Hero() {
         <div
           className="mb-4 text-alabaster/90 uppercase text-center mix-blend-difference"
           style={{
-            fontFamily: 'var(--font-montreal)',
+            fontFamily: 'var(--font-geist)',
             fontSize: '9px',
             fontWeight: 500,
             letterSpacing: '0.25em',
