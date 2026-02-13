@@ -1,54 +1,11 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: 'PPEditorialNew';
-  src: url('/assets/fonts/PPEditorialNew-Ultralight.otf') format('opentype');
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'PPEditorialNew';
-  src: url('/assets/fonts/PPEditorialNew-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'PPEditorialNew';
-  src: url('/assets/fonts/PPEditorialNew-Italic.otf') format('opentype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'PPNeueMontrealMono';
-  src: url('/assets/fonts/PPNeueMontrealMono-Book.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'PPNeueMontrealMono';
-  src: url('/assets/fonts/PPNeueMontrealMono-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --alabaster: #F9F8F4;
   --bone: #ECEAE4;
   --charcoal: #1C1B1A;
   --stone: #787672;
   --clay: #A6A29A;
-
-  --font-editorial: 'PPEditorialNew', serif;
-  --font-montreal: 'PPNeueMontrealMono', sans-serif;
 }
 
 @theme inline {
@@ -58,25 +15,23 @@
   --color-stone: var(--stone);
   --color-clay: var(--clay);
 
-  --font-editorial: var(--font-editorial);
-  --font-montreal: var(--font-montreal);
+  --font-instrument: var(--font-instrument);
+  --font-geist: var(--font-geist);
 
   --animate-fade-in: fadeIn 1.5s ease-out forwards;
   --animate-float: float 3s ease-in-out infinite;
 }
 
-/* FIX: Remove overflow settings from HTML to rely solely on Body */
 html {
   scroll-behavior: smooth;
   margin: 0;
   padding: 0;
 }
 
-/* FIX: Apply overflow-x: hidden ONLY here. Ensure min-height is 100vh. */
 body {
   background-color: var(--alabaster);
   color: var(--charcoal);
-  font-family: var(--font-montreal);
+  font-family: var(--font-geist);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
