@@ -74,8 +74,8 @@ export default function EditorsLetter() {
           <h2
             className="text-charcoal leading-[1.1] md:leading-[1.2] flex flex-wrap justify-center gap-x-[0.25em] gap-y-1"
             style={{
-              fontFamily: 'var(--font-editorial)',
-              fontWeight: 200,
+              fontFamily: 'var(--font-instrument)',
+              fontWeight: 400,
               fontSize: 'clamp(2.25rem, 5vw, 4rem)',
               letterSpacing: '-0.03em',
             }}
@@ -126,7 +126,7 @@ export default function EditorsLetter() {
           <p
             className="leading-[1.7] md:leading-[1.8] transition-colors duration-500 ease-out"
             style={{
-              fontFamily: 'var(--font-montreal)',
+              fontFamily: 'var(--font-geist)',
               fontSize: 'clamp(0.9rem, 1.2vw, 1.05rem)',
               fontWeight: 400,
               color: isHovered ? 'var(--charcoal)' : 'var(--stone)',
