@@ -7,15 +7,15 @@ export default function PrivacyPolicyPage() {
                 <h1
                     className="text-charcoal mb-16 leading-none"
                     style={{
-                        fontFamily: 'var(--font-editorial)',
-                        fontWeight: 200,
+                        fontFamily: 'var(--font-instrument)',
+                        fontWeight: 400,
                         fontSize: 'clamp(3rem, 6vw, 5rem)',
                     }}
                 >
                     Privacy Policy
                 </h1>
 
-                <div className="space-y-12 text-stone font-montreal text-sm md:text-base leading-relaxed text-justify">
+                <div className="space-y-12 text-stone font-geist text-sm md:text-base leading-relaxed text-justify">
                     <section>
                         <h2 className="text-charcoal uppercase tracking-widest text-xs font-bold mb-4">1. Introduction</h2>
                         <p>
