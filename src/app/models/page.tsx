@@ -88,8 +88,8 @@ export default function ModelsPage() {
               <h1
                 className="whitespace-nowrap leading-none transition-opacity duration-500"
                 style={{
-                  fontFamily: 'var(--font-editorial)',
-                  fontWeight: 200,
+                  fontFamily: 'var(--font-instrument)',
+                  fontWeight: 400,
                   fontSize: 'clamp(3rem, 12vw, 8rem)',
                   opacity: canHover ? (hoveredModel === model.id ? 1 : 0.7) : 1,
                 }}
@@ -128,7 +128,7 @@ export default function ModelsPage() {
           <span
             className="text-charcoal uppercase text-center leading-none animate-pulse"
             style={{
-              fontFamily: 'var(--font-montreal)',
+              fontFamily: 'var(--font-geist)',
               fontSize: '10px',
               fontWeight: 600,
               letterSpacing: '0.15em',
