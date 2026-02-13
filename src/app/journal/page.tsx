@@ -17,7 +17,7 @@ export default function JournalPage() {
         <span
           className="text-charcoal uppercase"
           style={{
-            fontFamily: 'var(--font-montreal)',
+            fontFamily: 'var(--font-geist)',
             fontSize: '10px',
             fontWeight: 600,
             letterSpacing: '0.2em',
@@ -28,7 +28,7 @@ export default function JournalPage() {
         <span
           className="text-stone uppercase"
           style={{
-            fontFamily: 'var(--font-montreal)',
+            fontFamily: 'var(--font-geist)',
             fontSize: '10px',
             fontWeight: 600,
             letterSpacing: '0.2em',
@@ -43,8 +43,8 @@ export default function JournalPage() {
           <h1
             className="text-charcoal leading-[1.1] animate-fade-in"
             style={{
-              fontFamily: 'var(--font-editorial)',
-              fontWeight: 200,
+              fontFamily: 'var(--font-instrument)',
+              fontWeight: 400,
               fontStyle: 'italic',
               fontSize: 'clamp(3rem, 8vw, 6rem)',
               letterSpacing: '-0.02em',
@@ -56,7 +56,7 @@ export default function JournalPage() {
           <p
             className="text-stone max-w-md mx-auto leading-relaxed animate-fade-in"
             style={{
-              fontFamily: 'var(--font-montreal)',
+              fontFamily: 'var(--font-geist)',
               fontSize: 'clamp(0.9rem, 1.2vw, 1rem)',
               fontWeight: 400,
               animationDelay: '0.2s',
@@ -72,7 +72,7 @@ export default function JournalPage() {
       <div className="pb-12 text-center relative z-10">
         <span
           className="text-clay/40 uppercase tracking-[0.2em] text-[9px]"
-          style={{ fontFamily: 'var(--font-montreal)' }}
+          style={{ fontFamily: 'var(--font-geist)' }}
         >
           Naath Model Management
         </span>
