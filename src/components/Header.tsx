@@ -82,7 +82,7 @@ export default function Header() {
 
             <span
               className="text-[9px] md:text-[10px] uppercase tracking-widest font-medium whitespace-nowrap min-w-0 overflow-hidden text-ellipsis mr-2"
-              style={{ fontFamily: 'var(--font-montreal)' }}
+              style={{ fontFamily: 'var(--font-geist)' }}
             >
               <span className="hidden md:inline">The Masterclass: Waitlist Now Open</span>
               <span className="md:hidden">The Masterclass: Waitlist:</span>
@@ -91,7 +91,7 @@ export default function Header() {
             {status === 'success' ? (
               <span
                 className="text-[9px] md:text-[10px] uppercase tracking-widest text-emerald-400 flex-1 text-right md:text-center md:flex-none pr-4 md:pr-0"
-                style={{ fontFamily: 'var(--font-montreal)' }}
+                style={{ fontFamily: 'var(--font-geist)' }}
               >
                 You&apos;re on the list.
               </span>
@@ -103,13 +103,13 @@ export default function Header() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={status === 'loading'}
-                  className="bg-transparent border-b border-white/20 py-1 w-[110px] md:w-[200px] text-[10px] placeholder:text-white/40 focus:outline-none focus:border-white transition-colors uppercase font-montreal text-alabaster"
+                  className="bg-transparent border-b border-white/20 py-1 w-[110px] md:w-[200px] text-[10px] placeholder:text-white/40 focus:outline-none focus:border-white transition-colors uppercase font-geist text-alabaster"
                 />
                 <button
                   type="submit"
                   disabled={status === 'loading'}
                   className="text-[9px] md:text-[10px] uppercase tracking-widest hover:text-white/70 transition-colors disabled:opacity-50 whitespace-nowrap"
-                  style={{ fontFamily: 'var(--font-montreal)' }}
+                  style={{ fontFamily: 'var(--font-geist)' }}
                 >
                   {status === 'loading' ? '...' : 'JOIN'}
                 </button>
@@ -141,8 +141,8 @@ export default function Header() {
             className={`relative z-50 transition-opacity duration-500 ${textColorClass} ${hoveredLink && hoveredLink !== 'logo' && canHover ? 'opacity-30' : 'opacity-100'
               }`}
             style={{
-              fontFamily: 'var(--font-editorial)',
-              fontWeight: 200,
+              fontFamily: 'var(--font-instrument)',
+              fontWeight: 400,
               fontSize: 'clamp(20px, 2vw, 26px)',
               letterSpacing: '0.01em',
               lineHeight: '1',
@@ -169,7 +169,7 @@ export default function Header() {
                     : 'opacity-100'
                   }`}
                 style={{
-                  fontFamily: 'var(--font-montreal)',
+                  fontFamily: 'var(--font-geist)',
                   fontWeight: 500,
                   fontSize: '11px',
                   letterSpacing: '0.15em',
@@ -186,7 +186,7 @@ export default function Header() {
           <button
             className={`md:hidden relative z-50 uppercase tracking-widest ${textColorClass}`}
             style={{
-              fontFamily: 'var(--font-montreal)',
+              fontFamily: 'var(--font-geist)',
               fontWeight: 500,
               fontSize: '11px',
               letterSpacing: '0.15em',
@@ -212,8 +212,8 @@ export default function Header() {
               className={`text-charcoal uppercase transition-transform duration-500 ease-out ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                 }`}
               style={{
-                fontFamily: 'var(--font-editorial)',
-                fontWeight: 200,
+                fontFamily: 'var(--font-instrument)',
+                fontWeight: 400,
                 fontSize: 'clamp(2rem, 8vw, 4rem)',
                 letterSpacing: '0.02em',
                 lineHeight: '1.1',
@@ -227,7 +227,7 @@ export default function Header() {
         </nav>
 
         <div className={`absolute bottom-10 text-stone text-[10px] uppercase tracking-widest transition-opacity duration-700 delay-300 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0'
-          }`} style={{ fontFamily: 'var(--font-montreal)' }}>
+          }`} style={{ fontFamily: 'var(--font-geist)' }}>
           © 2026 Naath Models
         </div>
       </div>
