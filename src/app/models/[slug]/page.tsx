@@ -75,6 +75,39 @@ const modelData: Record<string, ModelData> = {
       { src: '/assets/images/models/nyanhial-kueii/digital-4.webp', alt: 'Digital 4' },
     ],
   },
+  nthasibeng: {
+    name: 'Nthasibeng F.',
+    stats: {
+      height: '172cm / 5\'8"',
+      bust: '82cm / 32"',
+      waist: '59cm / 23"',
+      hips: '90cm / 35.5"',
+      shoe: '39 EU / 8.5 US',
+    },
+    images: [
+      { src: '/assets/images/models/nthasibeng/IMG_8278.webp', alt: 'Portfolio 1', type: 'portrait' },
+      { src: '/assets/images/models/nthasibeng/IMG_2496.webp', alt: 'Portfolio 2', type: 'portrait' },
+      { src: '/assets/images/models/nthasibeng/IMG_2497.webp', alt: 'Portfolio 3', type: 'portrait' },
+      { src: '/assets/images/models/nthasibeng/IMG_2500.webp', alt: 'Portfolio 4', type: 'portrait' },
+      { src: '/assets/images/models/nthasibeng/IMG_2506.webp', alt: 'Portfolio 5', type: 'portrait' },
+      { src: '/assets/images/models/nthasibeng/IMG_2507.webp', alt: 'Portfolio 6', type: 'portrait' },
+      { src: '/assets/images/models/nthasibeng/IMG_2510.webp', alt: 'Portfolio 7', type: 'portrait' },
+      { src: '/assets/images/models/nthasibeng/IMG_2511.webp', alt: 'Portfolio 8', type: 'portrait' },
+      { src: '/assets/images/models/nthasibeng/IMG_2513.webp', alt: 'Portfolio 9', type: 'portrait' },
+      { src: '/assets/images/models/nthasibeng/IMG_2516.webp', alt: 'Portfolio 10', type: 'portrait' },
+      { src: '/assets/images/models/nthasibeng/IMG_2519.webp', alt: 'Portfolio 11', type: 'portrait' },
+      { src: '/assets/images/models/nthasibeng/IMG_2520.webp', alt: 'Portfolio 12', type: 'portrait' },
+      { src: '/assets/images/models/nthasibeng/IMG_2521.webp', alt: 'Portfolio 13', type: 'landscape' },
+      { src: '/assets/images/models/nthasibeng/IMG_2529.webp', alt: 'Portfolio 14', type: 'portrait' },
+      { src: '/assets/images/models/nthasibeng/IMG_2530.webp', alt: 'Portfolio 15', type: 'portrait' },
+    ],
+    digitals: [
+      { src: '/assets/images/models/nthasibeng/IMG_0902.webp', alt: 'Digital 1' },
+      { src: '/assets/images/models/nthasibeng/IMG_0903.webp', alt: 'Digital 2' },
+      { src: '/assets/images/models/nthasibeng/IMG_0905.webp', alt: 'Digital 3' },
+      { src: '/assets/images/models/nthasibeng/IMG_0909.webp', alt: 'Digital 4' },
+    ],
+  },
 };
 
 type Props = {
