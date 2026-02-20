@@ -65,6 +65,14 @@ export default function PrivateViewingRoom() {
       specs: '180cm / 5\'11"',
       href: '/models/nyanhial-k',
     },
+    {
+      id: 'nthasibeng',
+      name: 'Nthasibeng F.',
+      image: '/assets/images/models/nthasibeng/IMG_8278.webp',
+      alt: 'Nthasibeng F Portfolio',
+      specs: '172cm / 5\'8"',
+      href: '/models/nthasibeng',
+    },
   ];
 
   return (
@@ -86,7 +94,7 @@ export default function PrivateViewingRoom() {
           className="text-stone text-[10px] uppercase tracking-widest font-medium mb-2 hidden md:block"
           style={{ fontFamily: 'var(--font-geist)' }}
         >
-          Currently Representing (02)
+          Currently Representing (03)
         </span>
       </div>
 
