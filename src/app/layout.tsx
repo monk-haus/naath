@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    metadataBase: new URL('https://naathmodels.com'),
+    metadataBase: new URL('https://www.naathmodels.com'),
     title: {
         default: "Naath Model Management",
         template: "%s | Naath Model Management",
@@ -39,11 +39,11 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Naath Model Management",
         description: "Defining the face of tomorrow. A boutique high-fashion model management agency.",
-        url: "https://naathmodels.com",
+        url: "https://www.naathmodels.com",
         siteName: "Naath Model Management",
         images: [
             {
-                url: "https://naathmodels.com/og-image.jpg",
+                url: "https://www.naathmodels.com/og-image.jpg",
                 width: 1200,
                 height: 630,
                 alt: "Naath Model Management",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Naath Model Management",
         description: "Defining the face of tomorrow.",
-        images: ["https://naathmodels.com/og-image.jpg"],
+        images: ["https://www.naathmodels.com/og-image.jpg"],
     },
     robots: {
         index: true,
