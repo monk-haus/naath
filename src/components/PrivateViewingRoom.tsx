@@ -66,12 +66,12 @@ export default function PrivateViewingRoom() {
       href: '/models/nyanhial-k',
     },
     {
-      id: 'nthasibeng',
-      name: 'Nthasibeng F.',
+      id: 'nthabiseng',
+      name: 'Nthabiseng F.',
       image: '/assets/images/models/nthasibeng/IMG_8278.webp',
-      alt: 'Nthasibeng F Portfolio',
+      alt: 'Nthabiseng F Portfolio',
       specs: '172cm / 5\'8"',
-      href: '/models/nthasibeng',
+      href: '/models/nthabiseng',
     },
   ];
 
