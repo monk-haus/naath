@@ -46,11 +46,11 @@ export default function ModelsPage() {
       number: '02',
     },
     {
-      id: 'nthasibeng',
-      name: 'NTHASIBENG',
-      slug: 'nthasibeng',
+      id: 'nthabiseng',
+      name: 'NTHABISENG',
+      slug: 'nthabiseng',
       image: '/assets/images/models/nthasibeng/IMG_8278.webp',
-      alt: 'Nthasibeng F',
+      alt: 'Nthabiseng F',
       number: '03',
     },
   ];
