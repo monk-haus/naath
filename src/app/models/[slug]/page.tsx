@@ -75,8 +75,8 @@ const modelData: Record<string, ModelData> = {
       { src: '/assets/images/models/nyanhial-kueii/digital-4.webp', alt: 'Digital 4' },
     ],
   },
-  nthasibeng: {
-    name: 'Nthasibeng F.',
+  nthabiseng: {
+    name: 'Nthabiseng F.',
     stats: {
       height: '172cm / 5\'8"',
       bust: '82cm / 32"',
