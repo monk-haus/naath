@@ -114,7 +114,7 @@ const modelData: Record<string, ModelData> = {
       { src: '/assets/images/models/olashay/96dd67d4-3d77-448f-82cd-8dbc2bab7981.webp', alt: 'Portfolio 2', type: 'landscape' },
       { src: '/assets/images/models/olashay/6f11939a-6b21-463f-95f4-df337368ba1e.webp', alt: 'Portfolio 3', type: 'portrait' },
       { src: '/assets/images/models/olashay/6e1faa0d-bd1e-4631-9d30-f86c5942fa72.webp', alt: 'Portfolio 4', type: 'portrait' },
-      { src: '/assets/images/models/olashay/1c99b5cb-ed6b-4271-bc43-b00b6de32160 2.webp', alt: 'Portfolio 5', type: 'portrait' },
+      { src: '/assets/images/models/olashay/1c99b5cb-ed6b-4271-bc43-b00b6de32160%202.webp', alt: 'Portfolio 5', type: 'portrait' },
     ],
     digitals: [],
   },
