@@ -5,14 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { jsPDF } from 'jspdf';
 
-interface ModelStats {
-    height: string;
-    bust: string;
-    waist: string;
-    hips: string;
-    shoe: string;
-}
-
 interface ModelImage {
     src: string;
     alt: string;
@@ -22,7 +14,7 @@ interface ModelImage {
 
 interface ModelData {
     name: string;
-    stats: ModelStats;
+    stats: Record<string, string>;
     images: ModelImage[];
     digitals: ModelImage[];
 }

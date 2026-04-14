@@ -4,14 +4,6 @@ import ClientPage from './ClientPage';
 
 export const runtime = 'edge';
 
-interface ModelStats {
-  height: string;
-  bust: string;
-  waist: string;
-  hips: string;
-  shoe: string;
-}
-
 interface ModelImage {
   src: string;
   alt: string;
@@ -21,7 +13,7 @@ interface ModelImage {
 
 interface ModelData {
   name: string;
-  stats: ModelStats;
+  stats: Record<string, string>;
   images: ModelImage[];
   digitals: ModelImage[];
 }
@@ -75,8 +67,8 @@ const modelData: Record<string, ModelData> = {
       { src: '/assets/images/models/nyanhial-kueii/digital-4.webp', alt: 'Digital 4' },
     ],
   },
-  nthabiseng: {
-    name: 'Nthabiseng F.',
+  nthasibeng: {
+    name: 'Nthasibeng F.',
     stats: {
       height: '172cm / 5\'8"',
       bust: '82cm / 32"',
@@ -107,6 +99,24 @@ const modelData: Record<string, ModelData> = {
       { src: '/assets/images/models/nthasibeng/IMG_0905.webp', alt: 'Digital 3' },
       { src: '/assets/images/models/nthasibeng/IMG_0909.webp', alt: 'Digital 4' },
     ],
+  },
+  'olashay-o': {
+    name: "Ola'shay O.",
+    stats: {
+      height: "180cm / 5'11\"",
+      waist: '28cm',
+      shoe: '42 EU / 8.5 US',
+      hair: 'Black',
+      eyes: 'Dark Brown',
+    },
+    images: [
+      { src: '/assets/images/models/olashay/b3af05c0-2add-4f69-a619-7eaf6f1aa35b.webp', alt: 'Portfolio 1', type: 'portrait' },
+      { src: '/assets/images/models/olashay/96dd67d4-3d77-448f-82cd-8dbc2bab7981.webp', alt: 'Portfolio 2', type: 'landscape' },
+      { src: '/assets/images/models/olashay/6f11939a-6b21-463f-95f4-df337368ba1e.webp', alt: 'Portfolio 3', type: 'portrait' },
+      { src: '/assets/images/models/olashay/6e1faa0d-bd1e-4631-9d30-f86c5942fa72.webp', alt: 'Portfolio 4', type: 'portrait' },
+      { src: '/assets/images/models/olashay/1c99b5cb-ed6b-4271-bc43-b00b6de32160 2.webp', alt: 'Portfolio 5', type: 'portrait' },
+    ],
+    digitals: [],
   },
 };
 
