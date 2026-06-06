@@ -188,7 +188,7 @@ export async function submitApplication(data: ApplicationData) {
     `;
 
     const result = await resend.emails.send({
-      from: 'Naath Applications <onboarding@resend.dev>',
+      from: 'Naath Applications <submissions@naathmodels.com>',
       to: directorEmail,
       subject: `New Application: ${data.fullName}`,
       html: emailHtml,
