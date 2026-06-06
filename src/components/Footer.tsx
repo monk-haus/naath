@@ -111,7 +111,7 @@ export default function Footer() {
                 Inquiries
               </span>
               <a
-                href="mailto:nyagua@naathmodels.com"
+                href="mailto:info@naathmodels.com"
                 className="text-alabaster hover:text-clay transition-colors duration-500 italic relative"
                 style={{
                   fontFamily: 'var(--font-instrument)',
@@ -120,7 +120,7 @@ export default function Footer() {
                   lineHeight: '1',
                 }}
               >
-                nyagua@naathmodels.com
+                info@naathmodels.com
               </a>
             </div>
 
