@@ -61,10 +61,13 @@ const modelData: Record<string, ModelData> = {
       { src: '/assets/images/models/nyanhial-kueii/B82D6A59-98D2-4B12-B262-439674AB0293.webp', alt: 'Portfolio 13', type: 'landscape' },
     ],
     digitals: [
-      { src: '/assets/images/models/nyanhial-kueii/digital-2.webp', alt: 'Digital 1' },
-      { src: '/assets/images/models/nyanhial-kueii/digital-1.webp', alt: 'Digital 2' },
-      { src: '/assets/images/models/nyanhial-kueii/digital-3.webp', alt: 'Digital 3' },
-      { src: '/assets/images/models/nyanhial-kueii/digital-4.webp', alt: 'Digital 4' },
+      { src: '/assets/images/models/nyanhial-kueii/digitals/nyanhial-digital-1.webp', alt: 'Digital 1' },
+      { src: '/assets/images/models/nyanhial-kueii/digitals/nyanhial-digital-2.webp', alt: 'Digital 2' },
+      { src: '/assets/images/models/nyanhial-kueii/digitals/nyanhial-digital-3.webp', alt: 'Digital 3' },
+      { src: '/assets/images/models/nyanhial-kueii/digitals/nyanhial-digital-4.webp', alt: 'Digital 4' },
+      { src: '/assets/images/models/nyanhial-kueii/digitals/nyanhial-digital-5.webp', alt: 'Digital 5' },
+      { src: '/assets/images/models/nyanhial-kueii/digitals/nyanhial-digital-6.webp', alt: 'Digital 6' },
+      { src: '/assets/images/models/nyanhial-kueii/digitals/nyanhial-digital-7.webp', alt: 'Digital 7' },
     ],
   },
   nthabiseng: {
