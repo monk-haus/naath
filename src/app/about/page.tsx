@@ -91,7 +91,8 @@ export default function AboutPage() {
 Too often, models, particularly African models, are treated as temporary. Faces are discovered quickly, consumed quickly, and discarded just as fast — without structure, guidance, or long-term protection.
 
 I founded Naath to change that.”`}</p>
-                <p className="whitespace-pre-line">{`“Naath; meaning people “Naath” means “people.”
+                <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] block pt-2">WHAT NAATH MEANS:</span>
+                <p className="whitespace-pre-line">{`“Naath” ; means people.
 
 The name was chosen intentionally to reflect the agency’s deeper purpose: uplifting, protecting, and representing our people on a larger global scale.
 
