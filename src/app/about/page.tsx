@@ -75,24 +75,62 @@ export default function AboutPage() {
 
             <div className="flex flex-col justify-center order-1 md:order-2">
               <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-8 block">01 — The Eye</span>
-              <h2
-                className="text-charcoal mb-12 leading-[1.1]"
-                style={{
-                  fontFamily: 'var(--font-instrument)',
-                  fontWeight: 400,
-                  fontSize: 'clamp(2.5rem, 4vw, 4.5rem)',
-                }}
-              >
-                The Eye
-              </h2>
 
-              <div className="space-y-8 text-charcoal/80 max-w-lg font-geist text-base md:text-lg leading-[1.7] font-light">
-                <p className="whitespace-pre-line">{`“When I founded Naath, I was driven by a singular vision.
-Too often, models, particularly African models, are treated as temporary. Faces are discovered quickly, consumed quickly, and discarded just as fast — without structure, guidance, or long-term protection.
+              <div className="space-y-10 font-geist text-lg md:text-xl leading-[1.6] text-charcoal font-light">
+                <p>
+                  &quot;When I founded Naath, I was driven by a singular vision. The industry had become a factory,
+                  churning through faces without regard for the individual artistry each model brings.&quot;
+                </p>
+                <p>
+                  &quot;At Naath, we operate differently. Every model in our roster is not just a booking;
+                  they are a collaboration. We work hand-in-hand to develop their unique aesthetic,
+                  refine their craft, and strategically position them in markets that will honor their
+                  distinct beauty.&quot;
+                </p>
+                <p className="text-charcoal font-medium">
+                  &quot;In a world of noise, we choose to be the quiet room where excellence is crafted,
+                  not manufactured.&quot;
+                </p>
+              </div>
+            </div>
 
-I founded Naath to change that.”`}</p>
-                <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] block pt-2">WHAT NAATH MEANS:</span>
-                <p className="whitespace-pre-line">{`“Naath” ; means people.
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-30 w-full border-t border-clay/20">
+        <div className="w-full max-w-[1000px] mx-auto px-6 md:px-12 py-16 md:py-24">
+          <div className="relative w-full bg-stone/10 group">
+            <div className="absolute inset-4 md:inset-8 border border-alabaster/30 z-10 pointer-events-none transition-all duration-700 group-hover:inset-6 md:group-hover:inset-10"></div>
+            <Image
+              src="/assets/images/about-divider-1.webp"
+              alt="Naath editorial"
+              width={960}
+              height={960}
+              className="w-full h-auto grayscale"
+              sizes="(max-width: 1000px) 100vw, 1000px"
+              unoptimized={process.env.NODE_ENV === 'development'}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-40 w-full bg-bone border-t border-clay/20">
+        <div className="w-full max-w-[900px] mx-auto px-6 md:px-12 py-24 md:py-40">
+          <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-8 block">02 — What Naath Means</span>
+          <h2
+            className="text-charcoal mb-12 leading-[1.1]"
+            style={{
+              fontFamily: 'var(--font-instrument)',
+              fontWeight: 400,
+              fontSize: 'clamp(2.5rem, 4vw, 4.5rem)',
+            }}
+          >
+            What Naath Means
+          </h2>
+
+          <div className="space-y-6 font-geist text-lg md:text-xl leading-[1.6] text-charcoal font-light">
+            <p className="whitespace-pre-line">{`“Naath” ; means people.
 
 The name was chosen intentionally to reflect the agency’s deeper purpose: uplifting, protecting, and representing our people on a larger global scale.
 
@@ -103,14 +141,28 @@ At its core, Naath exists to ensure our people are not only seen globally, but s
 At Naath, we operate differently.
 
 Every model on our roster is not simply a booking; they are a collaboration. We work hand-in-hand to develop their unique aesthetic, refine their craft, and strategically position them in markets that will honour their individuality, longevity, and potential.”`}</p>
-              </div>
-            </div>
-
           </div>
         </div>
       </section>
 
-      <section className="relative z-30 w-full bg-alabaster border-t border-clay/20">
+      <section className="relative z-50 w-full border-t border-clay/20">
+        <div className="w-full max-w-[1000px] mx-auto px-6 md:px-12 py-16 md:py-24">
+          <div className="relative w-full bg-stone/10 group">
+            <div className="absolute inset-4 md:inset-8 border border-alabaster/30 z-10 pointer-events-none transition-all duration-700 group-hover:inset-6 md:group-hover:inset-10"></div>
+            <Image
+              src="/assets/images/about-divider-2.webp"
+              alt="Naath editorial"
+              width={960}
+              height={1281}
+              className="w-full h-auto grayscale"
+              sizes="(max-width: 1000px) 100vw, 1000px"
+              unoptimized={process.env.NODE_ENV === 'development'}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-[60] w-full bg-alabaster border-t border-clay/20">
         <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 py-24 md:py-40">
           <div className="grid md:grid-cols-12 gap-12 lg:gap-24 items-start">
             <div className="md:col-span-5 relative order-2 md:order-1">
@@ -133,7 +185,7 @@ Every model on our roster is not simply a booking; they are a collaboration. We 
             </div>
 
             <div className="md:col-span-7 md:pl-8 pt-0 md:pt-12 order-1 md:order-2">
-              <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-10 block">02 — The Founder</span>
+              <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-10 block">03 — About the Founder</span>
               <h2
                 className="text-charcoal mb-12 leading-[1.1]"
                 style={{
@@ -165,7 +217,7 @@ Every model on our roster is not simply a booking; they are a collaboration. We 
       <section className="relative z-40 w-full bg-alabaster border-t border-clay/20">
         <div className="w-full max-w-[1200px] mx-auto px-6 md:px-12 py-24 md:py-40">
           <div className="text-center mb-24">
-            <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-6 block">03 — The Method</span>
+            <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-6 block">04 — The Method</span>
             <h2
               className="text-charcoal"
               style={{
