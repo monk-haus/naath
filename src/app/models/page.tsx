@@ -33,7 +33,7 @@ const allModels = [
     fullName: 'Nthabiseng F.',
     slug: 'nthabiseng',
     gender: 'women' as Gender,
-    image: '/assets/images/models/nthasibeng/IMG_8278.webp',
+    image: '/assets/images/models/nthasibeng/IMG_0902.webp',
     alt: 'Nthabiseng F',
     height: '172cm',
     number: '03',

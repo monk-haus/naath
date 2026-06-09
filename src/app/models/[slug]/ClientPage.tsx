@@ -8,6 +8,8 @@ import { jsPDF } from 'jspdf';
 interface ModelImage {
     src: string;
     alt: string;
+    width: number;
+    height: number;
     type?: 'landscape' | 'portrait' | 'detail';
     grayscale?: boolean;
 }
@@ -289,21 +291,21 @@ export default function ClientPage({ model }: { model: ModelData }) {
                     {model.images.map((img, index) => (
                         <div
                             key={index}
-                            className={`relative overflow-hidden bg-bone ${img.type === 'landscape'
-                                ? 'w-full aspect-[16/10]'
+                            className={`relative bg-bone ${img.type === 'landscape'
+                                ? 'w-full'
                                 : img.type === 'detail'
-                                    ? 'w-full md:w-2/3 mx-auto aspect-square'
-                                    : 'w-full md:w-1/2 mx-auto aspect-[3/4]'
+                                    ? 'w-full md:w-2/3 mx-auto'
+                                    : 'w-full md:w-1/2 mx-auto'
                                 }`}
                         >
                             <Image
                                 src={img.src}
                                 alt={img.alt}
-                                fill
+                                width={img.width}
+                                height={img.height}
                                 priority={index === 0}
-                                className="object-cover"
+                                className="w-full h-auto"
                                 style={{
-                                    ...(index === 0 ? { objectPosition: 'top center' } : {}),
                                     filter: img.grayscale ? 'grayscale(100%)' : 'none',
                                 }}
                                 sizes="90vw"
@@ -393,7 +395,7 @@ export default function ClientPage({ model }: { model: ModelData }) {
                                         src={digital.src}
                                         alt={digital.alt}
                                         fill
-                                        className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                                        className="object-contain grayscale hover:grayscale-0 transition-all duration-500"
                                         sizes="200px"
                                         unoptimized={process.env.NODE_ENV === 'development'}
                                     />
