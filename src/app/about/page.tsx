@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -25,6 +24,9 @@ export default function AboutPage() {
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto py-32 md:py-0">
+          <span className="text-clay text-xs md:text-sm font-geist uppercase tracking-[0.25em] mb-8 block animate-fade-in">
+            ABOUT — NAATH MODELS
+          </span>
           <h1
             className="text-charcoal mb-8 italic leading-[0.85] animate-fade-in"
             style={{
@@ -72,7 +74,7 @@ export default function AboutPage() {
             </div>
 
             <div className="flex flex-col justify-center order-1 md:order-2">
-              <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-8 block">01 — The Philosophy</span>
+              <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-8 block">01 — The Eye</span>
               <h2
                 className="text-charcoal mb-12 leading-[1.1]"
                 style={{
@@ -81,18 +83,19 @@ export default function AboutPage() {
                   fontSize: 'clamp(2.5rem, 4vw, 4.5rem)',
                 }}
               >
-                We do not just book jobs; <span className="italic">we build legacies.</span>
+                The Eye
               </h2>
 
-              <div className="space-y-8 text-charcoal/80 max-w-lg">
-                <p className="font-geist text-sm md:text-base leading-relaxed text-justify text-stone">
-                  In an era of mass recruitment, Naath returns to the art of personal management.
-                  We believe a model&apos;s career is not found; it is constructed.
-                </p>
-                <p className="font-geist text-sm md:text-base leading-relaxed text-justify text-stone">
-                  We are a boutique agency by design, limiting our board to ensure that every face
-                  we represent receives our undivided obsession.
-                </p>
+              <div className="space-y-8 text-charcoal/80 max-w-lg font-geist text-base md:text-lg leading-[1.7] font-light">
+                <p className="whitespace-pre-line">{`“When I founded Naath, I was driven by a singular vision.
+Too often, models, particularly African models, are treated as temporary. Faces are discovered quickly, consumed quickly, and discarded just as fast — without structure, guidance, or long-term protection.
+
+I founded Naath to change that.”`}</p>
+                <p className="whitespace-pre-line">{`“Naath; meaning people, was created as more than an agency. It is a platform rooted in representation, development, and care.
+
+At Naath, we operate differently.
+
+Every model on our roster is not simply a booking; they are a collaboration. We work hand-in-hand to develop their unique aesthetic, refine their craft, and strategically position them in markets that will honour their individuality, longevity, and potential.”`}</p>
               </div>
             </div>
 
@@ -118,28 +121,31 @@ export default function AboutPage() {
                 />
               </div>
               <div className="mt-6 flex justify-between items-end border-b border-clay/30 pb-2">
-                <span className="font-instrument italic text-xl md:text-2xl text-charcoal">The Director</span>
+                <span className="font-instrument italic text-xl md:text-2xl text-charcoal">The Founder</span>
               </div>
             </div>
 
             <div className="md:col-span-7 md:pl-8 pt-0 md:pt-12 order-1 md:order-2">
-              <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-10 block">02 — The Eye</span>
+              <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-10 block">02 — The Founder</span>
+              <h2
+                className="text-charcoal mb-12 leading-[1.1]"
+                style={{
+                  fontFamily: 'var(--font-instrument)',
+                  fontWeight: 400,
+                  fontSize: 'clamp(2.5rem, 4vw, 4.5rem)',
+                }}
+              >
+                About the Founder
+              </h2>
 
-              <div className="space-y-10 font-geist text-lg md:text-xl leading-[1.6] text-charcoal font-light">
-                <p>
-                  &quot;When I founded Naath, I was driven by a singular vision. The industry had become a factory,
-                  churning through faces without regard for the individual artistry each model brings.&quot;
-                </p>
-                <p>
-                  &quot;At Naath, we operate differently. Every model in our roster is not just a booking;
-                  they are a collaboration. We work hand-in-hand to develop their unique aesthetic,
-                  refine their craft, and strategically position them in markets that will honor their
-                  distinct beauty.&quot;
-                </p>
-                <p className="text-charcoal font-medium">
-                  &quot;In a world of noise, we choose to be the quiet room where excellence is crafted,
-                  not manufactured.&quot;
-                </p>
+              <div className="space-y-6 font-geist text-base md:text-lg leading-[1.7] text-charcoal/80 font-light">
+                <p>{`Nyagua Ruea is a South Sudanese model and founder of Naath Model Management.`}</p>
+                <p>{`Raised in Kenya and working internationally since her teenage years, Nyagua has built a globally recognised modeling career, appearing in British Vogue, international editorials, and campaigns for leading luxury fashion houses including Alexander McQueen, Dolce £ Gabbana, Victoria. Secret. She has walked for brands including Saint Laurent, Valentino, Mugler, Schiaparelli, Givenchy, Hermès, Chloé, Moschino, and Balmain.`}</p>
+                <p>{`Her work has appeared on billboards internationally, including Times Square, and she has been recognised among the industry’s Top 50 Models while also receiving a Models.com Model of the Year nomination.`}</p>
+                <p>{`The vision for Naath began more than seven years ago when Nyagua was just 17 years old. While beginning her own journey within the fashion industry, she recognised the lack of structure, guidance, and protection available to many African models entering the global market. Although the idea already existed, she understood that true leadership required firsthand experience.`}</p>
+                <p>{`Over the years, Nyagua intentionally focused on building her own international career, learning the industry from the inside — navigating castings, placements, contracts, fashion weeks, campaigns, and global markets firsthand. That experience became the foundation upon which Naath was built.`}</p>
+                <p>{`After years of working internationally, she launched Naath with a long-term vision: to build sustainable infrastructure for African talent while creating safer, more strategic pathways into the global fashion industry.`}</p>
+                <p>{`As the founder of South Sudan’s first modeling agency, her mission is to ensure African talent is not only visible globally, but protected, empowered, and developed with intention.`}</p>
               </div>
 
               <div className="mt-20 w-24 h-[1px] bg-charcoal"></div>
