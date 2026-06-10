@@ -70,8 +70,6 @@ export default function ModelsPage() {
   const [hoveredModel, setHoveredModel] = useState<string | null>(null);
   const [hoveredGender, setHoveredGender] = useState<Gender | null>(null);
   const [mounted, setMounted] = useState(false);
-  // true only on devices that genuinely support hover (mouse/trackpad).
-  // Touch-only tablets report `hover: none` so they get the touch layout.
   const [canHover, setCanHover] = useState(false);
 
   useMountEffect(() => {
@@ -104,7 +102,6 @@ export default function ModelsPage() {
       style={{ height: '100dvh' }}
     >
 
-      {/* ─── SELECTION SCREEN ──────────────────────────────────── */}
       <div
         className="absolute inset-0 flex flex-col items-center justify-center px-6"
         style={{
@@ -113,7 +110,6 @@ export default function ModelsPage() {
           transition: 'opacity 0.55s ease',
         }}
       >
-        {/* Label */}
         <div
           className="absolute top-0 left-0 right-0 flex justify-center pt-10"
           style={{ opacity: mounted ? 1 : 0, transition: 'opacity 1s ease 0.1s' }}
@@ -123,7 +119,6 @@ export default function ModelsPage() {
           </span>
         </div>
 
-        {/* Women / Men */}
         <div className="flex items-stretch">
           {(['women', 'men'] as Gender[]).map((g, i) => {
             const count = allModels.filter(m => m.gender === g).length;
@@ -192,7 +187,6 @@ export default function ModelsPage() {
         </div>
       </div>
 
-      {/* ─── BOARD — DESKTOP / TABLET ──────────────────────────── */}
       <div
         className="absolute inset-0 hidden md:flex"
         style={{
@@ -201,13 +195,6 @@ export default function ModelsPage() {
           transition: 'opacity 0.4s ease',
         }}
       >
-        {/*
-          Two layouts depending on input capability:
-          • canHover (mouse/trackpad): split — roster left, image reveal right
-          • !canHover (touch tablet):  full-width roster with inline thumbnails
-        */}
-
-        {/* Roster panel — full width on touch, 58% on hover */}
         <div
           className="relative flex flex-col h-full"
           style={{
@@ -216,7 +203,6 @@ export default function ModelsPage() {
             transition: 'width 0s',
           }}
         >
-          {/* Header */}
           <div className="flex items-center justify-between px-14 pb-6" style={{ paddingTop: '10.5rem' }}>
             <span style={{ ...mono, fontSize: '10px', color: 'rgba(249,248,244,0.22)' }}>
               Naath — {selectedGender === 'women' ? 'Women' : 'Men'}
@@ -247,7 +233,6 @@ export default function ModelsPage() {
 
           <div className="mx-14" style={{ height: '1px', backgroundColor: 'rgba(249,248,244,0.06)' }} />
 
-          {/* Rows */}
           <div className="flex flex-col flex-1 justify-center px-14 py-4">
             {filteredModels.map((model, index) => (
               <Link
@@ -264,7 +249,6 @@ export default function ModelsPage() {
                 onMouseEnter={() => canHover && setHoveredModel(model.id)}
                 onMouseLeave={() => canHover && setHoveredModel(null)}
               >
-                {/* Hover fill (mouse only) */}
                 {canHover && (
                   <div
                     className="absolute pointer-events-none"
@@ -323,7 +307,6 @@ export default function ModelsPage() {
                   {model.height}
                 </span>
 
-                {/* Touch tablet: inline portrait thumbnail */}
                 {!canHover && (
                   <div className="relative shrink-0" style={{ width: '64px', height: '88px' }}>
                     <Image
@@ -338,7 +321,6 @@ export default function ModelsPage() {
                   </div>
                 )}
 
-                {/* Mouse: animated arrow */}
                 {canHover && (
                   <span
                     style={{
@@ -354,7 +336,6 @@ export default function ModelsPage() {
                   </span>
                 )}
 
-                {/* Touch: static arrow */}
                 {!canHover && (
                   <span style={{ fontSize: '13px', color: 'rgba(249,248,244,0.2)', flexShrink: 0, marginLeft: '0.5rem' }}>
                     →
@@ -364,7 +345,6 @@ export default function ModelsPage() {
             ))}
           </div>
 
-          {/* Footer */}
           <div className="px-14 pb-8">
             <div className="mb-4" style={{ height: '1px', backgroundColor: 'rgba(249,248,244,0.06)' }} />
             <div className="flex items-center justify-between">
@@ -381,7 +361,6 @@ export default function ModelsPage() {
           </div>
         </div>
 
-        {/* Image reveal panel — mouse only */}
         {canHover && (
           <div className="relative flex-1 h-full" style={{ backgroundColor: '#161514' }}>
             <div
@@ -425,7 +404,6 @@ export default function ModelsPage() {
         )}
       </div>
 
-      {/* ─── BOARD — MOBILE ────────────────────────────────────── */}
       <div
         className="absolute inset-0 flex flex-col md:hidden"
         style={{
@@ -434,7 +412,6 @@ export default function ModelsPage() {
           transition: 'opacity 0.35s ease',
         }}
       >
-        {/* Model rows — padding-top clears fixed site header (ticker 40px + nav 90px) */}
         <div className="flex-1 overflow-y-auto" style={{ paddingTop: '8.5rem' }}>
           <div style={{ height: '1px', backgroundColor: 'rgba(249,248,244,0.07)', margin: '0 1.5rem 0' }} />
 
@@ -479,7 +456,6 @@ export default function ModelsPage() {
           ))}
         </div>
 
-        {/* Bottom bar — gender toggle + back, thumb-friendly and clear of the site header */}
         <div
           className="shrink-0 flex items-center justify-between"
           style={{

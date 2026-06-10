@@ -8,12 +8,9 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const pathname = usePathname();
 
-  // We disable animations completely on /models to prevent 'position: fixed' breaking
-  // due to stacking contexts created by opacity/transform.
   const isModelsPage = pathname?.startsWith('/models');
 
   useEffect(() => {
-    // Reset visibility on path change
     setIsVisible(false);
 
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -24,7 +21,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
     };
     mediaQuery.addEventListener('change', handleChange);
 
-    // Small delay to trigger the enter animation
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 20);
@@ -39,8 +35,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
     <div
       className="relative w-full"
       style={{
-        // FIX: Removed translateY. Using ONLY opacity prevents scrollbar jumping/geometry changes.
-        // On models page, we force opacity: 1 and transition: none immediately to allow fixed positioning.
         opacity: (prefersReducedMotion || isModelsPage) ? 1 : (isVisible ? 1 : 0),
 
         transition: (prefersReducedMotion || isModelsPage)

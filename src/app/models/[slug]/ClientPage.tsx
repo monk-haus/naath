@@ -36,7 +36,6 @@ const compressImage = (img: HTMLImageElement): string => {
     let width = img.width;
     let height = img.height;
 
-    // Resize large images to prevent PDF generation errors (Invalid array length)
     const maxDim = 1500;
     if (width > maxDim || height > maxDim) {
         const ratio = Math.min(maxDim / width, maxDim / height);
@@ -50,11 +49,10 @@ const compressImage = (img: HTMLImageElement): string => {
     const ctx = canvas.getContext('2d');
     if (ctx) {
         ctx.fillStyle = '#FFFFFF';
-        ctx.fillRect(0, 0, width, height); // Ensure no transparent backgrounds
+        ctx.fillRect(0, 0, width, height);
         ctx.drawImage(img, 0, 0, width, height);
     }
 
-    // Return base64 JPEG
     return canvas.toDataURL('image/jpeg', 0.85);
 };
 
@@ -107,7 +105,6 @@ export default function ClientPage({ model }: { model: ModelData }) {
                 }
 
                 const xPos = (210 - finalW) / 2;
-                // Use compressImage to prevent errors
                 doc.addImage(compressImage(mainImg), 'JPEG', xPos, 20, finalW, finalH);
             }
 
@@ -154,7 +151,6 @@ export default function ClientPage({ model }: { model: ModelData }) {
                     }
 
                     const x = (210 - w) / 2;
-                    // Use compressImage to prevent errors
                     doc.addImage(compressImage(img), 'JPEG', x, gridY, w, h);
                     gridY += h + 10;
                 });
@@ -202,7 +198,6 @@ export default function ClientPage({ model }: { model: ModelData }) {
                         w = h / imgRatio;
                     }
 
-                    // Use compressImage to prevent errors
                     doc.addImage(compressImage(img), 'JPEG', x, digitalY, w, h);
                 });
 

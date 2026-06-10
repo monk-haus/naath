@@ -18,7 +18,7 @@ export default function Header() {
 
   const isModelDetailPage = pathname?.startsWith('/models/') && pathname !== '/models';
 
-  const lightPages = ['/about', '/journal', '/apply'];
+  const lightPages = ['/about', '/journal', '/apply', '/development'];
   const isLightPage = lightPages.some(path => pathname?.startsWith(path));
 
   useEffect(() => {
@@ -65,6 +65,7 @@ export default function Header() {
 
   const navLinks = [
     { label: 'MODELS', href: '/models' },
+    { label: 'DEVELOPMENT', href: '/development' },
     { label: 'JOURNAL', href: '/journal' },
     { label: 'ABOUT', href: '/about' },
     { label: 'APPLY', href: '/apply' },

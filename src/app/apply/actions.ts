@@ -2,9 +2,6 @@
 
 import { Resend } from 'resend';
 
-// REMOVED: export const runtime = 'edge'; 
-// (This configuration belongs in page.tsx, not here)
-
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 interface ApplicationData {
