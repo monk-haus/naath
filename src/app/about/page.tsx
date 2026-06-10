@@ -125,6 +125,19 @@ At Naath, we operate differently.
 
 Every model on our roster is not simply a booking; they are a collaboration. We work hand-in-hand to develop their unique aesthetic, refine their craft, and strategically position them in markets that will honour their individuality, longevity, and potential.”`}</p>
           </div>
+
+          <div className="relative w-full bg-stone/10 group overflow-hidden mt-16 md:mt-24">
+            <div className="absolute inset-4 md:inset-8 border border-alabaster/30 z-10 pointer-events-none transition-all duration-700 group-hover:inset-6 md:group-hover:inset-10"></div>
+            <Image
+              src="/assets/images/about-naath-means.webp"
+              alt="Naath editorial"
+              width={960}
+              height={960}
+              className="w-full h-auto grayscale"
+              sizes="(max-width: 900px) 100vw, 900px"
+              unoptimized={process.env.NODE_ENV === 'development'}
+            />
+          </div>
         </div>
       </section>
 
