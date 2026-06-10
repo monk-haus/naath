@@ -80,12 +80,6 @@ export default function DevelopmentPage() {
             style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
           >
             <div className="h-12 md:h-16 w-[1px] bg-clay"></div>
-            <div
-              className="text-stone uppercase font-geist"
-              style={{ fontSize: 'clamp(0.7rem, 1vw, 0.85rem)', fontWeight: 500, letterSpacing: '0.3em', lineHeight: '2.4' }}
-            >
-              Short.<br />Strong.<br />Luxury.
-            </div>
           </div>
         </div>
       </section>
@@ -123,49 +117,30 @@ export default function DevelopmentPage() {
       </section>
 
       <section className="relative z-30 w-full bg-alabaster border-t border-clay/20">
-        <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 py-24 md:py-40">
-          <div className="grid md:grid-cols-12 gap-12 lg:gap-24 items-start">
-            <div className="md:col-span-5 relative order-2 md:order-1">
-              <div className="relative w-full overflow-hidden bg-stone/10 group">
-                <div className="absolute inset-4 border border-alabaster/30 z-10 pointer-events-none transition-all duration-700 group-hover:inset-6"></div>
-                <Image
-                  src="/assets/images/development/development-1.webp"
-                  alt="Model development"
-                  width={960}
-                  height={1281}
-                  className="w-full h-auto grayscale transition-transform duration-[20s] ease-linear group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  unoptimized={process.env.NODE_ENV === 'development'}
-                />
-              </div>
-            </div>
+        <div className="w-full max-w-[1100px] mx-auto px-6 md:px-12 py-24 md:py-40">
+          <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-8 block">Section 1 — Model Development</span>
+          <h2
+            className="text-charcoal mb-12 leading-[1.1]"
+            style={{ fontFamily: 'var(--font-instrument)', fontWeight: 400, fontSize: 'clamp(2.5rem, 4vw, 4.5rem)' }}
+          >
+            Building Strong Foundations
+          </h2>
 
-            <div className="md:col-span-7 md:pl-8 order-1 md:order-2">
-              <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-8 block">Section 1 — Model Development</span>
-              <h2
-                className="text-charcoal mb-12 leading-[1.1]"
-                style={{ fontFamily: 'var(--font-instrument)', fontWeight: 400, fontSize: 'clamp(2.5rem, 4vw, 4.5rem)' }}
+          <p className="font-geist text-base md:text-lg leading-[1.7] text-charcoal/80 font-light mb-10 max-w-2xl">
+            Each model receives tailored guidance based on their individual look, strengths, and long-term potential.
+          </p>
+
+          <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-6 block">Development includes</span>
+          <ul className="grid sm:grid-cols-2 gap-x-12">
+            {developmentIncludes.map((item) => (
+              <li
+                key={item}
+                className="font-geist text-charcoal text-base md:text-lg font-light py-3 border-b border-clay/15"
               >
-                Building Strong Foundations
-              </h2>
-
-              <p className="font-geist text-base md:text-lg leading-[1.7] text-charcoal/80 font-light mb-10 max-w-xl">
-                Each model receives tailored guidance based on their individual look, strengths, and long-term potential.
-              </p>
-
-              <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-6 block">Development includes</span>
-              <ul className="grid sm:grid-cols-2 gap-x-12">
-                {developmentIncludes.map((item) => (
-                  <li
-                    key={item}
-                    className="font-geist text-charcoal text-base md:text-lg font-light py-3 border-b border-clay/15"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -223,53 +198,34 @@ export default function DevelopmentPage() {
       </section>
 
       <section className="relative z-40 w-full bg-alabaster border-t border-clay/20">
-        <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 py-24 md:py-40">
-          <div className="grid md:grid-cols-12 gap-12 lg:gap-24 items-start">
-            <div className="md:col-span-7 order-1">
-              <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-8 block">Section 3 — Wellness &amp; Mentorship</span>
-              <h2
-                className="text-charcoal mb-12 leading-[1.1]"
-                style={{ fontFamily: 'var(--font-instrument)', fontWeight: 400, fontSize: 'clamp(2.5rem, 4vw, 4.5rem)' }}
-              >
-                Beyond The Industry
-              </h2>
+        <div className="w-full max-w-[1100px] mx-auto px-6 md:px-12 py-24 md:py-40">
+          <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-8 block">Section 3 — Wellness &amp; Mentorship</span>
+          <h2
+            className="text-charcoal mb-12 leading-[1.1]"
+            style={{ fontFamily: 'var(--font-instrument)', fontWeight: 400, fontSize: 'clamp(2.5rem, 4vw, 4.5rem)' }}
+          >
+            Beyond The Industry
+          </h2>
 
-              <div className="space-y-8 font-geist text-base md:text-lg leading-[1.7] text-charcoal/80 font-light max-w-xl mb-10">
-                <p>The fashion industry can be demanding both mentally and emotionally.</p>
-                <p>
-                  Naath prioritises mentorship, emotional support, and honest guidance to ensure models feel supported
-                  throughout every stage of their careers.
-                </p>
-              </div>
-
-              <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-6 block">We are committed to</span>
-              <ul className="grid sm:grid-cols-2 gap-x-12">
-                {commitments.map((item) => (
-                  <li
-                    key={item}
-                    className="font-geist text-charcoal text-base md:text-lg font-light py-3 border-b border-clay/15"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="md:col-span-5 relative order-2">
-              <div className="relative w-full overflow-hidden bg-stone/10 group">
-                <div className="absolute inset-4 border border-alabaster/30 z-10 pointer-events-none transition-all duration-700 group-hover:inset-6"></div>
-                <Image
-                  src="/assets/images/development/development-2.webp"
-                  alt="Wellness and mentorship"
-                  width={960}
-                  height={1281}
-                  className="w-full h-auto grayscale transition-transform duration-[20s] ease-linear group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  unoptimized={process.env.NODE_ENV === 'development'}
-                />
-              </div>
-            </div>
+          <div className="space-y-8 font-geist text-base md:text-lg leading-[1.7] text-charcoal/80 font-light max-w-2xl mb-10">
+            <p>The fashion industry can be demanding both mentally and emotionally.</p>
+            <p>
+              Naath prioritises mentorship, emotional support, and honest guidance to ensure models feel supported
+              throughout every stage of their careers.
+            </p>
           </div>
+
+          <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-6 block">We are committed to</span>
+          <ul className="grid sm:grid-cols-2 gap-x-12">
+            {commitments.map((item) => (
+              <li
+                key={item}
+                className="font-geist text-charcoal text-base md:text-lg font-light py-3 border-b border-clay/15"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

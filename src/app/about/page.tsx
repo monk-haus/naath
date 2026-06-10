@@ -98,23 +98,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative z-30 w-full border-t border-clay/20">
-        <div className="w-full max-w-[1000px] mx-auto px-6 md:px-12 py-16 md:py-24">
-          <div className="relative w-full bg-stone/10 group">
-            <div className="absolute inset-4 md:inset-8 border border-alabaster/30 z-10 pointer-events-none transition-all duration-700 group-hover:inset-6 md:group-hover:inset-10"></div>
-            <Image
-              src="/assets/images/about-divider-1.webp"
-              alt="Naath editorial"
-              width={960}
-              height={960}
-              className="w-full h-auto grayscale"
-              sizes="(max-width: 1000px) 100vw, 1000px"
-              unoptimized={process.env.NODE_ENV === 'development'}
-            />
-          </div>
-        </div>
-      </section>
-
       <section className="relative z-40 w-full bg-bone border-t border-clay/20">
         <div className="w-full max-w-[900px] mx-auto px-6 md:px-12 py-24 md:py-40">
           <span className="text-clay text-xs font-geist uppercase tracking-[0.25em] mb-8 block">02 — What Naath Means</span>
@@ -141,23 +124,6 @@ At its core, Naath exists to ensure our people are not only seen globally, but s
 At Naath, we operate differently.
 
 Every model on our roster is not simply a booking; they are a collaboration. We work hand-in-hand to develop their unique aesthetic, refine their craft, and strategically position them in markets that will honour their individuality, longevity, and potential.”`}</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="relative z-50 w-full border-t border-clay/20">
-        <div className="w-full max-w-[1000px] mx-auto px-6 md:px-12 py-16 md:py-24">
-          <div className="relative w-full bg-stone/10 group">
-            <div className="absolute inset-4 md:inset-8 border border-alabaster/30 z-10 pointer-events-none transition-all duration-700 group-hover:inset-6 md:group-hover:inset-10"></div>
-            <Image
-              src="/assets/images/about-divider-2.webp"
-              alt="Naath editorial"
-              width={960}
-              height={1281}
-              className="w-full h-auto grayscale"
-              sizes="(max-width: 1000px) 100vw, 1000px"
-              unoptimized={process.env.NODE_ENV === 'development'}
-            />
           </div>
         </div>
       </section>
@@ -199,7 +165,6 @@ Every model on our roster is not simply a booking; they are a collaboration. We 
 
               <div className="space-y-6 font-geist text-base md:text-lg leading-[1.7] text-charcoal/80 font-light">
                 <p>{`Founded by Nyagua Ruea in 2019, the vision for Naath began more than seven years ago when Nyagua was just 17 years old. While beginning her own journey within the fashion industry, she recognised the lack of structure, guidance, and protection available to many African models entering the global market. Although the concept for Naath already existed, she understood that true leadership required firsthand experience and intentionally chose to spend years learning the industry from the inside before officially launching the agency in 2025.`}</p>
-                <p>{`Nyagua Ruea is a South Sudanese model and founder of Naath Model Management.`}</p>
                 <p>{`Raised in Kenya and working internationally since her teenage years, Nyagua has built a globally recognised modeling career, appearing in British Vogue, international editorials, and campaigns for leading luxury fashion houses including Alexander McQueen, Dolce & Gabbana, and Victoria’s Secret. She has walked for brands including Saint Laurent, Valentino, Mugler, Schiaparelli, Givenchy, Hermès, Chloé, Moschino, and Balmain.`}</p>
                 <p>{`Her work has appeared on billboards internationally, including Times Square, and she has been recognised among the industry’s Top 50 Models while also receiving a Models.com Model of the Year nomination.`}</p>
                 <p>{`Over the years, Nyagua focused on building her own international career firsthand — navigating castings, placements, contracts, fashion weeks, campaigns, and global markets. That experience became the foundation upon which Naath was built.`}</p>
