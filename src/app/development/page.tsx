@@ -91,18 +91,16 @@ export default function DevelopmentPage() {
       </section>
 
       <section className="relative z-20 w-full bg-alabaster border-t border-clay/20">
-        <div className="w-full max-w-[760px] mx-auto px-6 md:px-12 py-16 md:py-24">
+        <div className="w-full max-w-[480px] mx-auto px-6 md:px-12 py-16 md:py-24">
           <div className="relative w-full bg-stone/10 group overflow-hidden">
-            <div className="absolute inset-4 md:inset-8 border border-alabaster/30 z-10 pointer-events-none transition-all duration-700 group-hover:inset-6 md:group-hover:inset-10"></div>
-            <Image
-              src="/assets/images/model-1.webp"
-              alt="Naath editorial"
-              width={864}
-              height={1080}
+            <div className="absolute inset-4 border border-alabaster/30 z-10 pointer-events-none transition-all duration-700 group-hover:inset-6"></div>
+            <video
+              src="/assets/images/development/development-reel.mp4"
               className="w-full h-auto grayscale"
-              sizes="(max-width: 760px) 100vw, 760px"
-              priority
-              unoptimized={process.env.NODE_ENV === 'development'}
+              autoPlay
+              muted
+              loop
+              playsInline
             />
           </div>
         </div>
@@ -131,10 +129,10 @@ export default function DevelopmentPage() {
               <div className="relative w-full overflow-hidden bg-stone/10 group">
                 <div className="absolute inset-4 border border-alabaster/30 z-10 pointer-events-none transition-all duration-700 group-hover:inset-6"></div>
                 <Image
-                  src="/assets/images/model-2.webp"
+                  src="/assets/images/development/development-1.webp"
                   alt="Model development"
-                  width={1440}
-                  height={1440}
+                  width={960}
+                  height={1281}
                   className="w-full h-auto grayscale transition-transform duration-[20s] ease-linear group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 40vw"
                   unoptimized={process.env.NODE_ENV === 'development'}
@@ -167,6 +165,26 @@ export default function DevelopmentPage() {
                 ))}
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-30 w-full bg-alabaster border-t border-clay/20">
+        <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 py-16 md:py-24">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
+            {['development-3', 'development-4', 'development-5', 'development-6'].map((name) => (
+              <div key={name} className="relative w-full overflow-hidden bg-stone/10 group">
+                <Image
+                  src={`/assets/images/development/${name}.webp`}
+                  alt="Naath development"
+                  width={960}
+                  height={1281}
+                  className="w-full h-auto grayscale transition-transform duration-[20s] ease-linear group-hover:scale-105"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  unoptimized={process.env.NODE_ENV === 'development'}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -241,10 +259,10 @@ export default function DevelopmentPage() {
               <div className="relative w-full overflow-hidden bg-stone/10 group">
                 <div className="absolute inset-4 border border-alabaster/30 z-10 pointer-events-none transition-all duration-700 group-hover:inset-6"></div>
                 <Image
-                  src="/assets/images/upscalemedia-transformed_3.webp"
+                  src="/assets/images/development/development-2.webp"
                   alt="Wellness and mentorship"
-                  width={1280}
-                  height={1555}
+                  width={960}
+                  height={1281}
                   className="w-full h-auto grayscale transition-transform duration-[20s] ease-linear group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 40vw"
                   unoptimized={process.env.NODE_ENV === 'development'}
