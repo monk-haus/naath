@@ -147,13 +147,18 @@ export default function DevelopmentPage() {
       <section className="relative z-30 w-full bg-alabaster border-t border-clay/20">
         <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 py-16 md:py-24">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
-            {['development-3', 'development-4', 'development-5', 'development-6'].map((name) => (
-              <div key={name} className="relative w-full overflow-hidden bg-stone/10 group">
+            {[
+              { src: '/assets/images/development/development-3.webp', width: 960, height: 1281 },
+              { src: '/assets/images/development/development-4.webp', width: 960, height: 1281 },
+              { src: '/assets/images/upscalemedia-transformed_3.webp', width: 1280, height: 1555 },
+              { src: '/assets/images/development/development-6.webp', width: 960, height: 1281 },
+            ].map((img) => (
+              <div key={img.src} className="relative w-full overflow-hidden bg-stone/10 group">
                 <Image
-                  src={`/assets/images/development/${name}.webp`}
+                  src={img.src}
                   alt="Naath development"
-                  width={960}
-                  height={1281}
+                  width={img.width}
+                  height={img.height}
                   className="w-full h-auto grayscale transition-transform duration-[20s] ease-linear group-hover:scale-105"
                   sizes="(max-width: 768px) 50vw, 25vw"
                   unoptimized={process.env.NODE_ENV === 'development'}
