@@ -52,9 +52,10 @@ const modelData: Record<string, ModelData> = {
       shoe: '40 EU / 10 US',
     },
     images: [
-      { src: '/assets/images/models/nyanhial-kueii/658C13AC-D5F6-453D-A4BD-1CADD8474F1C.webp', alt: 'Portfolio 1', width: 1440, height: 1440, type: 'portrait' },
-      { src: '/assets/images/models/nyanhial-kueii/2631c71b-929b-45d1-8586-88b64aa99f05.webp', alt: 'Portfolio 2', width: 960, height: 1440, type: 'portrait' },
-      { src: '/assets/images/models/nyanhial-kueii/839effc8-b01d-484a-b94d-1b544f396ee5.webp', alt: 'Portfolio 3', width: 960, height: 1163, type: 'portrait' },
+      { src: '/assets/images/models/nyanhial-kueii/7222371e-1a5e-4811-aede-48ef8aee96bb.webp', alt: 'Portfolio 1', width: 1066, height: 1600, type: 'portrait' },
+      { src: '/assets/images/models/nyanhial-kueii/658C13AC-D5F6-453D-A4BD-1CADD8474F1C.webp', alt: 'Portfolio 2', width: 1440, height: 1440, type: 'portrait' },
+      { src: '/assets/images/models/nyanhial-kueii/2631c71b-929b-45d1-8586-88b64aa99f05.webp', alt: 'Portfolio 3', width: 960, height: 1440, type: 'portrait' },
+      { src: '/assets/images/models/nyanhial-kueii/839effc8-b01d-484a-b94d-1b544f396ee5.webp', alt: 'Portfolio 4', width: 960, height: 1163, type: 'portrait' },
     ],
     digitals: [
       { src: '/assets/images/models/nyanhial-kueii/digitals/nyanhial-digital-1.webp', alt: 'Digital 1', width: 915, height: 1281 },
